@@ -891,3 +891,17 @@
 2023-05-06 18:05:07,975 - INFO - Class 7 - Aerobics with 0 occurrences
 2023-05-06 18:05:07,980 - WARNING -  * Debugger is active!
 2023-05-06 18:05:07,990 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 18:18:16,180 - INFO - Classes fetched
+2023-05-06 18:18:16,183 - INFO - 127.0.0.1 - - [06/May/2023 18:18:16] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:23:21,280 - INFO - Classes fetched
+2023-05-06 18:23:21,284 - INFO - 127.0.0.1 - - [06/May/2023 18:23:21] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:23:21,326 - INFO - Classes fetched
+2023-05-06 18:23:21,327 - INFO - 127.0.0.1 - - [06/May/2023 18:23:21] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:23:50,862 - INFO - Classes fetched
+2023-05-06 18:23:50,863 - INFO - 127.0.0.1 - - [06/May/2023 18:23:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:23:51,008 - INFO - Classes fetched
+2023-05-06 18:23:51,009 - INFO - 127.0.0.1 - - [06/May/2023 18:23:51] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:29:00,874 - INFO - Classes fetched
+2023-05-06 18:29:00,877 - INFO - 127.0.0.1 - - [06/May/2023 18:29:00] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:29:00,914 - INFO - Classes fetched
+2023-05-06 18:29:00,914 - INFO - 127.0.0.1 - - [06/May/2023 18:29:00] "GET /api/classes HTTP/1.1" 200 -

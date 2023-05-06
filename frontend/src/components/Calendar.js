@@ -26,7 +26,11 @@ const Calendar = ({ classes }) => {
   };  
 
   const getEventDates = (occurrence) => {
-    const start = moment().startOf('week').day(occurrence.day).hour(moment(occurrence.time, 'HH:mm').hour()).minute(moment(occurrence.time, 'HH:mm').minute());
+    const start = moment()
+      .startOf('week')
+      .day(occurrence.day.toLowerCase())
+      .hour(moment(occurrence.time, 'HH:mm').hour())
+      .minute(moment(occurrence.time, 'HH:mm').minute());
     const end = start.clone().add(1, 'hours');
     return { start: start.toDate(), end: end.toDate() };
   };
@@ -35,19 +39,18 @@ const Calendar = ({ classes }) => {
     return classItem.occurrences.map((occurrence) => {
       const { start, end } = getEventDates(occurrence);
       return {
-        title: classItem.name, // Only display the class name
+        title: classItem.name,
         start,
         end,
-        id: classItem.id,
+        id: occurrence.id,
         allDay: false,
-        occurrences: classItem.occurrences,
-        current_capacity: classItem.current_capacity,
-        max_capacity: classItem.max_capacity,
-        color: getClassColor(classItem.id), // Assign the color based on the class id
+        className: classItem.name,
+        current_capacity: occurrence.current_capacity,
+        max_capacity: occurrence.max_capacity,
+        color: getClassColor(classItem.id),
       };
     });
   });
-  
 
   return (
     <>
