@@ -1,0 +1,13 @@
+/* Make the event box have round edges */
+.fc-event {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make the class name bold and centered in the box */
+.fc-event-title {
+  font-weight: bold;
+  text-align: center;
+}

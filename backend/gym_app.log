@@ -1,0 +1,893 @@
+2023-05-04 22:17:16,685 - INFO - Initializing the application...
+2023-05-04 22:17:16,685 - INFO - Timetable data loaded successfully.
+2023-05-04 22:17:16,685 - INFO - Inside the app context...
+2023-05-04 22:17:16,694 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:17:16,694 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:17:16,724 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-04 22:17:16,724 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-04 22:17:16,727 - INFO -  * Restarting with stat
+2023-05-04 22:17:17,230 - INFO - Initializing the application...
+2023-05-04 22:17:17,230 - INFO - Timetable data loaded successfully.
+2023-05-04 22:17:17,230 - INFO - Inside the app context...
+2023-05-04 22:17:17,239 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:17:17,239 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:17:17,244 - WARNING -  * Debugger is active!
+2023-05-04 22:17:17,254 - INFO -  * Debugger PIN: 648-031-458
+2023-05-04 22:17:20,123 - INFO - Classes fetched
+2023-05-04 22:17:20,124 - INFO - 127.0.0.1 - - [04/May/2023 22:17:20] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:20:29,105 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-04 22:20:29,316 - INFO -  * Restarting with stat
+2023-05-04 22:20:30,506 - INFO - Initializing the application...
+2023-05-04 22:20:30,506 - INFO - Timetable data loaded successfully.
+2023-05-04 22:20:30,518 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:20:30,518 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:20:30,519 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:20:30,519 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:20:30,519 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:20:30,519 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:20:30,519 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:20:30,530 - WARNING -  * Debugger is active!
+2023-05-04 22:20:30,543 - INFO -  * Debugger PIN: 648-031-458
+2023-05-04 22:20:33,786 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-04 22:20:33,995 - INFO -  * Restarting with stat
+2023-05-04 22:20:34,703 - INFO - Initializing the application...
+2023-05-04 22:20:34,703 - INFO - Timetable data loaded successfully.
+2023-05-04 22:20:34,711 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:20:34,712 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:20:34,717 - WARNING -  * Debugger is active!
+2023-05-04 22:20:34,725 - INFO -  * Debugger PIN: 648-031-458
+2023-05-04 22:20:38,286 - INFO - Initializing the application...
+2023-05-04 22:20:38,286 - INFO - Timetable data loaded successfully.
+2023-05-04 22:20:38,295 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:20:38,295 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:20:38,304 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-04 22:20:38,304 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-04 22:20:38,305 - INFO -  * Restarting with stat
+2023-05-04 22:20:38,866 - INFO - Initializing the application...
+2023-05-04 22:20:38,866 - INFO - Timetable data loaded successfully.
+2023-05-04 22:20:38,877 - INFO - Class 1 - Yoga with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 2 - Pilates with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 4 - Body Pump with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:20:38,877 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:20:38,882 - WARNING -  * Debugger is active!
+2023-05-04 22:20:38,898 - INFO -  * Debugger PIN: 648-031-458
+2023-05-04 22:20:42,818 - INFO - Classes fetched
+2023-05-04 22:20:42,819 - INFO - 127.0.0.1 - - [04/May/2023 22:20:42] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:23:01,985 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-04 22:23:02,120 - INFO -  * Restarting with stat
+2023-05-04 22:23:03,519 - INFO - Initializing the application...
+2023-05-04 22:23:03,519 - INFO - Timetable data loaded successfully.
+2023-05-04 22:23:03,541 - INFO - Initializing the database...
+2023-05-04 22:23:03,543 - INFO - Timetable data: [{'id': 1, 'name': 'Yoga', 'occurrences': [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]}, {'id': 2, 'name': 'Pilates', 'occurrences': [{'id': 8, 'day': 'Tuesday', 'time': '10:00', 'max_capacity': 15, 'current_capacity': 1}, {'id': 9, 'day': 'Thursday', 'time': '11:00', 'max_capacity': 15, 'current_capacity': 3}]}, {'id': 3, 'name': 'Zumba', 'occurrences': []}, {'id': 4, 'name': 'Body Pump', 'occurrences': [{'id': 1, 'day': 'Monday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 2, 'day': 'Monday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 5}, {'id': 3, 'day': 'Monday', 'time': '17:00', 'max_capacity': 20, 'current_capacity': 0}, {'id': 4, 'day': 'Wednesday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 12}, {'id': 5, 'day': 'Thursday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 8}]}, {'id': 5, 'name': 'Spin', 'occurrences': []}, {'id': 6, 'name': 'Boot Camp', 'occurrences': []}, {'id': 7, 'name': 'Aerobics', 'occurrences': []}]
+2023-05-04 22:23:03,543 - INFO - Yoga occurrences data: [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]
+2023-05-04 22:23:59,409 - INFO - Initializing the application...
+2023-05-04 22:23:59,410 - INFO - Timetable data loaded successfully.
+2023-05-04 22:23:59,446 - INFO - Initializing the database...
+2023-05-04 22:23:59,447 - INFO - Timetable data: [{'id': 1, 'name': 'Yoga', 'occurrences': [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]}, {'id': 2, 'name': 'Pilates', 'occurrences': [{'id': 8, 'day': 'Tuesday', 'time': '10:00', 'max_capacity': 15, 'current_capacity': 1}, {'id': 9, 'day': 'Thursday', 'time': '11:00', 'max_capacity': 15, 'current_capacity': 3}]}, {'id': 3, 'name': 'Zumba', 'occurrences': []}, {'id': 4, 'name': 'Body Pump', 'occurrences': [{'id': 1, 'day': 'Monday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 2, 'day': 'Monday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 5}, {'id': 3, 'day': 'Monday', 'time': '17:00', 'max_capacity': 20, 'current_capacity': 0}, {'id': 4, 'day': 'Wednesday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 12}, {'id': 5, 'day': 'Thursday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 8}]}, {'id': 5, 'name': 'Spin', 'occurrences': []}, {'id': 6, 'name': 'Boot Camp', 'occurrences': []}, {'id': 7, 'name': 'Aerobics', 'occurrences': []}]
+2023-05-04 22:23:59,447 - INFO - Yoga occurrences data: [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]
+2023-05-04 22:25:00,054 - INFO - Initializing the application...
+2023-05-04 22:25:00,054 - INFO - Timetable data loaded successfully.
+2023-05-04 22:25:00,089 - INFO - Initializing the database...
+2023-05-04 22:25:00,090 - INFO - Timetable data: [{'id': 1, 'name': 'Yoga', 'occurrences': [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]}, {'id': 2, 'name': 'Pilates', 'occurrences': [{'id': 8, 'day': 'Tuesday', 'time': '10:00', 'max_capacity': 15, 'current_capacity': 1}, {'id': 9, 'day': 'Thursday', 'time': '11:00', 'max_capacity': 15, 'current_capacity': 3}]}, {'id': 3, 'name': 'Zumba', 'occurrences': []}, {'id': 4, 'name': 'Body Pump', 'occurrences': [{'id': 1, 'day': 'Monday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 2, 'day': 'Monday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 5}, {'id': 3, 'day': 'Monday', 'time': '17:00', 'max_capacity': 20, 'current_capacity': 0}, {'id': 4, 'day': 'Wednesday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 12}, {'id': 5, 'day': 'Thursday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 8}]}, {'id': 5, 'name': 'Spin', 'occurrences': []}, {'id': 6, 'name': 'Boot Camp', 'occurrences': []}, {'id': 7, 'name': 'Aerobics', 'occurrences': []}]
+2023-05-04 22:25:00,090 - INFO - Yoga occurrences data: [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]
+2023-05-04 22:26:59,800 - INFO - Initializing the application...
+2023-05-04 22:26:59,800 - INFO - Timetable data loaded successfully.
+2023-05-04 22:26:59,815 - INFO - Initializing the database...
+2023-05-04 22:26:59,815 - INFO - Timetable data: [{'id': 1, 'name': 'Yoga', 'occurrences': [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]}, {'id': 2, 'name': 'Pilates', 'occurrences': [{'id': 8, 'day': 'Tuesday', 'time': '10:00', 'max_capacity': 15, 'current_capacity': 1}, {'id': 9, 'day': 'Thursday', 'time': '11:00', 'max_capacity': 15, 'current_capacity': 3}]}, {'id': 3, 'name': 'Zumba', 'occurrences': []}, {'id': 4, 'name': 'Body Pump', 'occurrences': [{'id': 1, 'day': 'Monday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 2, 'day': 'Monday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 5}, {'id': 3, 'day': 'Monday', 'time': '17:00', 'max_capacity': 20, 'current_capacity': 0}, {'id': 4, 'day': 'Wednesday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 12}, {'id': 5, 'day': 'Thursday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 8}]}, {'id': 5, 'name': 'Spin', 'occurrences': []}, {'id': 6, 'name': 'Boot Camp', 'occurrences': []}, {'id': 7, 'name': 'Aerobics', 'occurrences': []}]
+2023-05-04 22:26:59,816 - INFO - Yoga occurrences data: [{'id': 6, 'day': 'Monday', 'time': '08:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 7, 'day': 'Wednesday', 'time': '09:00', 'max_capacity': 20, 'current_capacity': 5}]
+2023-05-04 22:26:59,823 - INFO - Pilates occurrences data: [{'id': 8, 'day': 'Tuesday', 'time': '10:00', 'max_capacity': 15, 'current_capacity': 1}, {'id': 9, 'day': 'Thursday', 'time': '11:00', 'max_capacity': 15, 'current_capacity': 3}]
+2023-05-04 22:26:59,828 - INFO - Zumba occurrences data: []
+2023-05-04 22:26:59,832 - INFO - Body Pump occurrences data: [{'id': 1, 'day': 'Monday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 10}, {'id': 2, 'day': 'Monday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 5}, {'id': 3, 'day': 'Monday', 'time': '17:00', 'max_capacity': 20, 'current_capacity': 0}, {'id': 4, 'day': 'Wednesday', 'time': '06:00', 'max_capacity': 20, 'current_capacity': 12}, {'id': 5, 'day': 'Thursday', 'time': '07:00', 'max_capacity': 20, 'current_capacity': 8}]
+2023-05-04 22:26:59,836 - INFO - Spin occurrences data: []
+2023-05-04 22:26:59,838 - INFO - Boot Camp occurrences data: []
+2023-05-04 22:26:59,842 - INFO - Aerobics occurrences data: []
+2023-05-04 22:26:59,845 - INFO - Database initialized and populated with dummy timetable
+2023-05-04 22:26:59,847 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-04 22:26:59,848 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-04 22:26:59,848 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-04 22:26:59,848 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-04 22:26:59,848 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:26:59,848 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-04 22:26:59,848 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-04 22:26:59,848 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:26:59,848 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:26:59,848 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:26:59,882 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-04 22:26:59,882 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-04 22:26:59,885 - INFO -  * Restarting with stat
+2023-05-04 22:27:00,377 - INFO - Initializing the application...
+2023-05-04 22:27:00,377 - INFO - Timetable data loaded successfully.
+2023-05-04 22:27:00,387 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-04 22:27:00,387 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-04 22:27:00,387 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-04 22:27:00,387 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-04 22:27:00,387 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-04 22:27:00,387 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-04 22:27:00,387 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-04 22:27:00,387 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-04 22:27:00,387 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-04 22:27:00,388 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-04 22:27:00,388 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-04 22:27:00,388 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-04 22:27:00,388 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-04 22:27:00,388 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-04 22:27:00,388 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-04 22:27:00,388 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-04 22:27:00,392 - WARNING -  * Debugger is active!
+2023-05-04 22:27:00,404 - INFO -  * Debugger PIN: 648-031-458
+2023-05-04 22:27:08,006 - INFO - Classes fetched
+2023-05-04 22:27:08,007 - INFO - 127.0.0.1 - - [04/May/2023 22:27:08] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:27:34,170 - INFO - Classes fetched
+2023-05-04 22:27:34,171 - INFO - 127.0.0.1 - - [04/May/2023 22:27:34] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:27:34,177 - INFO - Classes fetched
+2023-05-04 22:27:34,178 - INFO - 127.0.0.1 - - [04/May/2023 22:27:34] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:28:04,941 - INFO - Classes fetched
+2023-05-04 22:28:04,942 - INFO - 127.0.0.1 - - [04/May/2023 22:28:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:28:04,948 - INFO - Classes fetched
+2023-05-04 22:28:04,948 - INFO - 127.0.0.1 - - [04/May/2023 22:28:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:34:00,174 - INFO - Classes fetched
+2023-05-04 22:34:00,177 - INFO - 127.0.0.1 - - [04/May/2023 22:34:00] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:34:00,184 - INFO - Classes fetched
+2023-05-04 22:34:00,185 - INFO - 127.0.0.1 - - [04/May/2023 22:34:00] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:34:14,169 - INFO - Classes fetched
+2023-05-04 22:34:14,170 - INFO - 127.0.0.1 - - [04/May/2023 22:34:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:34:14,176 - INFO - Classes fetched
+2023-05-04 22:34:14,177 - INFO - 127.0.0.1 - - [04/May/2023 22:34:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:34:14,187 - INFO - Classes fetched
+2023-05-04 22:34:14,189 - INFO - 127.0.0.1 - - [04/May/2023 22:34:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:35:42,118 - INFO - Classes fetched
+2023-05-04 22:35:42,120 - INFO - 127.0.0.1 - - [04/May/2023 22:35:42] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:35:42,131 - INFO - Classes fetched
+2023-05-04 22:35:42,133 - INFO - 127.0.0.1 - - [04/May/2023 22:35:42] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:35:42,148 - INFO - Classes fetched
+2023-05-04 22:35:42,152 - INFO - 127.0.0.1 - - [04/May/2023 22:35:42] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:35:42,161 - INFO - Classes fetched
+2023-05-04 22:35:42,162 - INFO - 127.0.0.1 - - [04/May/2023 22:35:42] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:37:05,335 - INFO - Classes fetched
+2023-05-04 22:37:05,336 - INFO - 127.0.0.1 - - [04/May/2023 22:37:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:37:05,356 - INFO - Classes fetched
+2023-05-04 22:37:05,357 - INFO - 127.0.0.1 - - [04/May/2023 22:37:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:37:05,369 - INFO - Classes fetched
+2023-05-04 22:37:05,370 - INFO - 127.0.0.1 - - [04/May/2023 22:37:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:37:05,384 - INFO - Classes fetched
+2023-05-04 22:37:05,386 - INFO - 127.0.0.1 - - [04/May/2023 22:37:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:07,767 - INFO - Classes fetched
+2023-05-04 22:38:07,768 - INFO - 127.0.0.1 - - [04/May/2023 22:38:07] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:07,774 - INFO - Classes fetched
+2023-05-04 22:38:07,774 - INFO - 127.0.0.1 - - [04/May/2023 22:38:07] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:07,790 - INFO - Classes fetched
+2023-05-04 22:38:07,790 - INFO - 127.0.0.1 - - [04/May/2023 22:38:07] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:07,802 - INFO - Classes fetched
+2023-05-04 22:38:07,803 - INFO - 127.0.0.1 - - [04/May/2023 22:38:07] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:51,261 - INFO - Classes fetched
+2023-05-04 22:38:51,264 - INFO - 127.0.0.1 - - [04/May/2023 22:38:51] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:51,269 - INFO - Classes fetched
+2023-05-04 22:38:51,270 - INFO - 127.0.0.1 - - [04/May/2023 22:38:51] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:51,283 - INFO - Classes fetched
+2023-05-04 22:38:51,285 - INFO - 127.0.0.1 - - [04/May/2023 22:38:51] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:51,295 - INFO - Classes fetched
+2023-05-04 22:38:51,296 - INFO - 127.0.0.1 - - [04/May/2023 22:38:51] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:55,381 - INFO - Classes fetched
+2023-05-04 22:38:55,382 - INFO - 127.0.0.1 - - [04/May/2023 22:38:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:55,387 - INFO - Classes fetched
+2023-05-04 22:38:55,388 - INFO - 127.0.0.1 - - [04/May/2023 22:38:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:55,395 - INFO - Classes fetched
+2023-05-04 22:38:55,395 - INFO - 127.0.0.1 - - [04/May/2023 22:38:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:38:55,403 - INFO - Classes fetched
+2023-05-04 22:38:55,404 - INFO - 127.0.0.1 - - [04/May/2023 22:38:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:41:27,393 - INFO - Classes fetched
+2023-05-04 22:41:27,399 - INFO - 127.0.0.1 - - [04/May/2023 22:41:27] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:41:27,405 - INFO - Classes fetched
+2023-05-04 22:41:27,406 - INFO - 127.0.0.1 - - [04/May/2023 22:41:27] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:41:27,426 - INFO - Classes fetched
+2023-05-04 22:41:27,427 - INFO - 127.0.0.1 - - [04/May/2023 22:41:27] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:41:27,434 - INFO - Classes fetched
+2023-05-04 22:41:27,436 - INFO - 127.0.0.1 - - [04/May/2023 22:41:27] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:44:45,728 - INFO - Classes fetched
+2023-05-04 22:44:45,729 - INFO - 127.0.0.1 - - [04/May/2023 22:44:45] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:44:45,741 - INFO - Classes fetched
+2023-05-04 22:44:45,742 - INFO - 127.0.0.1 - - [04/May/2023 22:44:45] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:44:45,752 - INFO - Classes fetched
+2023-05-04 22:44:45,754 - INFO - 127.0.0.1 - - [04/May/2023 22:44:45] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:44:45,765 - INFO - Classes fetched
+2023-05-04 22:44:45,766 - INFO - 127.0.0.1 - - [04/May/2023 22:44:45] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:44,056 - INFO - Classes fetched
+2023-05-04 22:46:44,058 - INFO - 127.0.0.1 - - [04/May/2023 22:46:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:44,082 - INFO - Classes fetched
+2023-05-04 22:46:44,083 - INFO - 127.0.0.1 - - [04/May/2023 22:46:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:44,096 - INFO - Classes fetched
+2023-05-04 22:46:44,097 - INFO - 127.0.0.1 - - [04/May/2023 22:46:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:44,105 - INFO - Classes fetched
+2023-05-04 22:46:44,108 - INFO - 127.0.0.1 - - [04/May/2023 22:46:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:47,705 - INFO - Classes fetched
+2023-05-04 22:46:47,706 - INFO - 127.0.0.1 - - [04/May/2023 22:46:47] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:47,718 - INFO - Classes fetched
+2023-05-04 22:46:47,719 - INFO - 127.0.0.1 - - [04/May/2023 22:46:47] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:47,726 - INFO - Classes fetched
+2023-05-04 22:46:47,727 - INFO - 127.0.0.1 - - [04/May/2023 22:46:47] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:46:47,735 - INFO - Classes fetched
+2023-05-04 22:46:47,736 - INFO - 127.0.0.1 - - [04/May/2023 22:46:47] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:58:58,188 - INFO - Classes fetched
+2023-05-04 22:58:58,191 - INFO - 127.0.0.1 - - [04/May/2023 22:58:58] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:58:58,208 - INFO - Classes fetched
+2023-05-04 22:58:58,209 - INFO - 127.0.0.1 - - [04/May/2023 22:58:58] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:58:58,261 - INFO - Classes fetched
+2023-05-04 22:58:58,262 - INFO - 127.0.0.1 - - [04/May/2023 22:58:58] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:58:58,268 - INFO - Classes fetched
+2023-05-04 22:58:58,270 - INFO - 127.0.0.1 - - [04/May/2023 22:58:58] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:59:13,309 - INFO - Classes fetched
+2023-05-04 22:59:13,310 - INFO - 127.0.0.1 - - [04/May/2023 22:59:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:59:13,325 - INFO - Classes fetched
+2023-05-04 22:59:13,327 - INFO - 127.0.0.1 - - [04/May/2023 22:59:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:59:13,352 - INFO - Classes fetched
+2023-05-04 22:59:13,353 - INFO - 127.0.0.1 - - [04/May/2023 22:59:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 22:59:13,357 - INFO - Classes fetched
+2023-05-04 22:59:13,358 - INFO - 127.0.0.1 - - [04/May/2023 22:59:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:16,324 - INFO - Classes fetched
+2023-05-04 23:06:16,327 - INFO - 127.0.0.1 - - [04/May/2023 23:06:16] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:16,333 - INFO - Classes fetched
+2023-05-04 23:06:16,334 - INFO - 127.0.0.1 - - [04/May/2023 23:06:16] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:16,529 - INFO - Classes fetched
+2023-05-04 23:06:16,530 - INFO - 127.0.0.1 - - [04/May/2023 23:06:16] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:16,543 - INFO - Classes fetched
+2023-05-04 23:06:16,544 - INFO - 127.0.0.1 - - [04/May/2023 23:06:16] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:20,734 - INFO - Classes fetched
+2023-05-04 23:06:20,735 - INFO - 127.0.0.1 - - [04/May/2023 23:06:20] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:20,743 - INFO - Classes fetched
+2023-05-04 23:06:20,743 - INFO - 127.0.0.1 - - [04/May/2023 23:06:20] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:20,832 - INFO - Classes fetched
+2023-05-04 23:06:20,833 - INFO - 127.0.0.1 - - [04/May/2023 23:06:20] "GET /api/classes HTTP/1.1" 200 -
+2023-05-04 23:06:20,838 - INFO - Classes fetched
+2023-05-04 23:06:20,839 - INFO - 127.0.0.1 - - [04/May/2023 23:06:20] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:51:55,800 - INFO - Initializing the application...
+2023-05-05 17:51:55,800 - INFO - Timetable data loaded successfully.
+2023-05-05 17:51:55,816 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 17:51:55,816 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 17:51:55,816 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 17:51:55,816 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 17:51:55,816 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 17:51:55,816 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 17:51:55,816 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 17:51:55,816 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 17:51:55,816 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 17:51:55,816 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 17:51:55,868 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-05 17:51:55,868 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-05 17:51:55,869 - INFO -  * Restarting with stat
+2023-05-05 17:51:56,372 - INFO - Initializing the application...
+2023-05-05 17:51:56,372 - INFO - Timetable data loaded successfully.
+2023-05-05 17:51:56,381 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 17:51:56,381 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 17:51:56,381 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 17:51:56,381 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 17:51:56,381 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 17:51:56,381 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 17:51:56,381 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 17:51:56,381 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 17:51:56,381 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 17:51:56,382 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 17:51:56,386 - WARNING -  * Debugger is active!
+2023-05-05 17:51:56,400 - INFO -  * Debugger PIN: 878-216-661
+2023-05-05 17:57:50,626 - INFO - Classes fetched
+2023-05-05 17:57:50,630 - INFO - 127.0.0.1 - - [05/May/2023 17:57:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:57:50,637 - INFO - Classes fetched
+2023-05-05 17:57:50,638 - INFO - 127.0.0.1 - - [05/May/2023 17:57:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:57:50,682 - INFO - Classes fetched
+2023-05-05 17:57:50,682 - INFO - 127.0.0.1 - - [05/May/2023 17:57:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:57:50,687 - INFO - Classes fetched
+2023-05-05 17:57:50,688 - INFO - 127.0.0.1 - - [05/May/2023 17:57:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:58:11,905 - INFO - Classes fetched
+2023-05-05 17:58:11,907 - INFO - 127.0.0.1 - - [05/May/2023 17:58:11] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:58:11,912 - INFO - Classes fetched
+2023-05-05 17:58:11,913 - INFO - 127.0.0.1 - - [05/May/2023 17:58:11] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:58:12,096 - INFO - Classes fetched
+2023-05-05 17:58:12,097 - INFO - 127.0.0.1 - - [05/May/2023 17:58:12] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 17:58:12,118 - INFO - Classes fetched
+2023-05-05 17:58:12,119 - INFO - 127.0.0.1 - - [05/May/2023 17:58:12] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:04:02,306 - INFO - Classes fetched
+2023-05-05 18:04:02,308 - INFO - 127.0.0.1 - - [05/May/2023 18:04:02] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:04:02,313 - INFO - Classes fetched
+2023-05-05 18:04:02,314 - INFO - 127.0.0.1 - - [05/May/2023 18:04:02] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:04:02,391 - INFO - Classes fetched
+2023-05-05 18:04:02,392 - INFO - 127.0.0.1 - - [05/May/2023 18:04:02] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:04:02,401 - INFO - Classes fetched
+2023-05-05 18:04:02,401 - INFO - 127.0.0.1 - - [05/May/2023 18:04:02] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:06:27,193 - INFO - Classes fetched
+2023-05-05 18:06:27,197 - INFO - 127.0.0.1 - - [05/May/2023 18:06:27] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:14:44,142 - INFO - Classes fetched
+2023-05-05 18:14:44,145 - INFO - 127.0.0.1 - - [05/May/2023 18:14:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:14:44,151 - INFO - Classes fetched
+2023-05-05 18:14:44,152 - INFO - 127.0.0.1 - - [05/May/2023 18:14:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:14:44,193 - INFO - Classes fetched
+2023-05-05 18:14:44,193 - INFO - 127.0.0.1 - - [05/May/2023 18:14:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:14:44,199 - INFO - Classes fetched
+2023-05-05 18:14:44,201 - INFO - 127.0.0.1 - - [05/May/2023 18:14:44] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:15:13,016 - INFO - Classes fetched
+2023-05-05 18:15:13,018 - INFO - 127.0.0.1 - - [05/May/2023 18:15:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:15:13,021 - INFO - Classes fetched
+2023-05-05 18:15:13,022 - INFO - 127.0.0.1 - - [05/May/2023 18:15:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:15:13,089 - INFO - Classes fetched
+2023-05-05 18:15:13,090 - INFO - 127.0.0.1 - - [05/May/2023 18:15:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:15:13,095 - INFO - Classes fetched
+2023-05-05 18:15:13,096 - INFO - 127.0.0.1 - - [05/May/2023 18:15:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:22:29,236 - INFO - Classes fetched
+2023-05-05 18:22:29,239 - INFO - 127.0.0.1 - - [05/May/2023 18:22:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:22:29,251 - INFO - Classes fetched
+2023-05-05 18:22:29,252 - INFO - 127.0.0.1 - - [05/May/2023 18:22:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:22:29,325 - INFO - Classes fetched
+2023-05-05 18:22:29,326 - INFO - 127.0.0.1 - - [05/May/2023 18:22:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:22:29,331 - INFO - Classes fetched
+2023-05-05 18:22:29,331 - INFO - 127.0.0.1 - - [05/May/2023 18:22:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:24:54,461 - INFO - Classes fetched
+2023-05-05 18:24:54,465 - INFO - 127.0.0.1 - - [05/May/2023 18:24:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:24:54,476 - INFO - Classes fetched
+2023-05-05 18:24:54,477 - INFO - 127.0.0.1 - - [05/May/2023 18:24:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:24:54,532 - INFO - Classes fetched
+2023-05-05 18:24:54,533 - INFO - 127.0.0.1 - - [05/May/2023 18:24:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:24:54,549 - INFO - Classes fetched
+2023-05-05 18:24:54,551 - INFO - 127.0.0.1 - - [05/May/2023 18:24:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:25:14,122 - INFO - Classes fetched
+2023-05-05 18:25:14,124 - INFO - 127.0.0.1 - - [05/May/2023 18:25:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:25:14,129 - INFO - Classes fetched
+2023-05-05 18:25:14,131 - INFO - 127.0.0.1 - - [05/May/2023 18:25:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:25:14,242 - INFO - Classes fetched
+2023-05-05 18:25:14,243 - INFO - 127.0.0.1 - - [05/May/2023 18:25:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:25:14,247 - INFO - Classes fetched
+2023-05-05 18:25:14,248 - INFO - 127.0.0.1 - - [05/May/2023 18:25:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:28:52,443 - INFO - Classes fetched
+2023-05-05 18:28:52,445 - INFO - 127.0.0.1 - - [05/May/2023 18:28:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:28:52,454 - INFO - Classes fetched
+2023-05-05 18:28:52,454 - INFO - 127.0.0.1 - - [05/May/2023 18:28:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:28:52,548 - INFO - Classes fetched
+2023-05-05 18:28:52,549 - INFO - 127.0.0.1 - - [05/May/2023 18:28:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:28:52,554 - INFO - Classes fetched
+2023-05-05 18:28:52,555 - INFO - 127.0.0.1 - - [05/May/2023 18:28:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:35,323 - INFO - Classes fetched
+2023-05-05 18:31:35,325 - INFO - 127.0.0.1 - - [05/May/2023 18:31:35] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:35,341 - INFO - Classes fetched
+2023-05-05 18:31:35,341 - INFO - 127.0.0.1 - - [05/May/2023 18:31:35] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:35,405 - INFO - Classes fetched
+2023-05-05 18:31:35,406 - INFO - 127.0.0.1 - - [05/May/2023 18:31:35] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:35,411 - INFO - Classes fetched
+2023-05-05 18:31:35,412 - INFO - 127.0.0.1 - - [05/May/2023 18:31:35] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:53,066 - INFO - Classes fetched
+2023-05-05 18:31:53,067 - INFO - 127.0.0.1 - - [05/May/2023 18:31:53] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:53,071 - INFO - Classes fetched
+2023-05-05 18:31:53,072 - INFO - 127.0.0.1 - - [05/May/2023 18:31:53] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:53,159 - INFO - Classes fetched
+2023-05-05 18:31:53,159 - INFO - 127.0.0.1 - - [05/May/2023 18:31:53] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:31:53,178 - INFO - Classes fetched
+2023-05-05 18:31:53,179 - INFO - 127.0.0.1 - - [05/May/2023 18:31:53] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:34:50,669 - INFO - Classes fetched
+2023-05-05 18:34:50,670 - INFO - 127.0.0.1 - - [05/May/2023 18:34:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:34:50,684 - INFO - Classes fetched
+2023-05-05 18:34:50,685 - INFO - 127.0.0.1 - - [05/May/2023 18:34:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:34:50,771 - INFO - Classes fetched
+2023-05-05 18:34:50,772 - INFO - 127.0.0.1 - - [05/May/2023 18:34:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:34:50,781 - INFO - Classes fetched
+2023-05-05 18:34:50,781 - INFO - 127.0.0.1 - - [05/May/2023 18:34:50] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:35:04,907 - INFO - Classes fetched
+2023-05-05 18:35:04,909 - INFO - 127.0.0.1 - - [05/May/2023 18:35:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:35:04,915 - INFO - Classes fetched
+2023-05-05 18:35:04,917 - INFO - 127.0.0.1 - - [05/May/2023 18:35:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:35:04,979 - INFO - Classes fetched
+2023-05-05 18:35:04,980 - INFO - 127.0.0.1 - - [05/May/2023 18:35:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:35:04,987 - INFO - Classes fetched
+2023-05-05 18:35:04,987 - INFO - 127.0.0.1 - - [05/May/2023 18:35:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:37:46,621 - INFO - Classes fetched
+2023-05-05 18:37:46,623 - INFO - 127.0.0.1 - - [05/May/2023 18:37:46] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:37:46,655 - INFO - Classes fetched
+2023-05-05 18:37:46,656 - INFO - 127.0.0.1 - - [05/May/2023 18:37:46] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:37:46,706 - INFO - Classes fetched
+2023-05-05 18:37:46,707 - INFO - 127.0.0.1 - - [05/May/2023 18:37:46] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:37:46,714 - INFO - Classes fetched
+2023-05-05 18:37:46,715 - INFO - 127.0.0.1 - - [05/May/2023 18:37:46] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:33,123 - INFO - Classes fetched
+2023-05-05 18:38:33,126 - INFO - 127.0.0.1 - - [05/May/2023 18:38:33] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:33,139 - INFO - Classes fetched
+2023-05-05 18:38:33,140 - INFO - 127.0.0.1 - - [05/May/2023 18:38:33] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:33,156 - INFO - Classes fetched
+2023-05-05 18:38:33,157 - INFO - 127.0.0.1 - - [05/May/2023 18:38:33] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:33,162 - INFO - Classes fetched
+2023-05-05 18:38:33,163 - INFO - 127.0.0.1 - - [05/May/2023 18:38:33] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:52,891 - INFO - Classes fetched
+2023-05-05 18:38:52,893 - INFO - 127.0.0.1 - - [05/May/2023 18:38:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:52,899 - INFO - Classes fetched
+2023-05-05 18:38:52,900 - INFO - 127.0.0.1 - - [05/May/2023 18:38:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:52,942 - INFO - Classes fetched
+2023-05-05 18:38:52,943 - INFO - 127.0.0.1 - - [05/May/2023 18:38:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:38:52,947 - INFO - Classes fetched
+2023-05-05 18:38:52,948 - INFO - 127.0.0.1 - - [05/May/2023 18:38:52] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:37,029 - INFO - Classes fetched
+2023-05-05 18:43:37,030 - INFO - 127.0.0.1 - - [05/May/2023 18:43:37] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:37,038 - INFO - Classes fetched
+2023-05-05 18:43:37,039 - INFO - 127.0.0.1 - - [05/May/2023 18:43:37] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:37,119 - INFO - Classes fetched
+2023-05-05 18:43:37,120 - INFO - 127.0.0.1 - - [05/May/2023 18:43:37] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:37,129 - INFO - Classes fetched
+2023-05-05 18:43:37,130 - INFO - 127.0.0.1 - - [05/May/2023 18:43:37] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:57,185 - INFO - Classes fetched
+2023-05-05 18:43:57,187 - INFO - 127.0.0.1 - - [05/May/2023 18:43:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:57,198 - INFO - Classes fetched
+2023-05-05 18:43:57,199 - INFO - 127.0.0.1 - - [05/May/2023 18:43:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:57,263 - INFO - Classes fetched
+2023-05-05 18:43:57,263 - INFO - 127.0.0.1 - - [05/May/2023 18:43:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:43:57,268 - INFO - Classes fetched
+2023-05-05 18:43:57,269 - INFO - 127.0.0.1 - - [05/May/2023 18:43:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:29,549 - INFO - Classes fetched
+2023-05-05 18:49:29,553 - INFO - 127.0.0.1 - - [05/May/2023 18:49:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:29,558 - INFO - Classes fetched
+2023-05-05 18:49:29,559 - INFO - 127.0.0.1 - - [05/May/2023 18:49:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:29,635 - INFO - Classes fetched
+2023-05-05 18:49:29,636 - INFO - 127.0.0.1 - - [05/May/2023 18:49:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:29,641 - INFO - Classes fetched
+2023-05-05 18:49:29,642 - INFO - 127.0.0.1 - - [05/May/2023 18:49:29] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:55,282 - INFO - Classes fetched
+2023-05-05 18:49:55,284 - INFO - 127.0.0.1 - - [05/May/2023 18:49:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:55,288 - INFO - Classes fetched
+2023-05-05 18:49:55,292 - INFO - 127.0.0.1 - - [05/May/2023 18:49:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:55,353 - INFO - Classes fetched
+2023-05-05 18:49:55,354 - INFO - 127.0.0.1 - - [05/May/2023 18:49:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:49:55,362 - INFO - Classes fetched
+2023-05-05 18:49:55,363 - INFO - 127.0.0.1 - - [05/May/2023 18:49:55] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:52:57,372 - INFO - Classes fetched
+2023-05-05 18:52:57,375 - INFO - 127.0.0.1 - - [05/May/2023 18:52:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:52:57,386 - INFO - Classes fetched
+2023-05-05 18:52:57,387 - INFO - 127.0.0.1 - - [05/May/2023 18:52:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:52:57,453 - INFO - Classes fetched
+2023-05-05 18:52:57,453 - INFO - 127.0.0.1 - - [05/May/2023 18:52:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:52:57,460 - INFO - Classes fetched
+2023-05-05 18:52:57,461 - INFO - 127.0.0.1 - - [05/May/2023 18:52:57] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 18:59:11,230 - INFO - Classes fetched
+2023-05-05 18:59:11,232 - INFO - 127.0.0.1 - - [05/May/2023 18:59:11] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:02:47,903 - INFO - 127.0.0.1 - - [05/May/2023 19:02:47] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:02:51,845 - INFO - 127.0.0.1 - - [05/May/2023 19:02:51] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:05:59,672 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-05 19:05:59,954 - INFO -  * Restarting with stat
+2023-05-05 19:06:01,246 - INFO - Initializing the application...
+2023-05-05 19:06:01,247 - INFO - Timetable data loaded successfully.
+2023-05-05 19:06:01,256 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:06:01,257 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:06:01,257 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:06:01,257 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:06:01,257 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:06:01,257 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:06:01,257 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:06:01,257 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:06:01,257 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:06:01,257 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:06:01,277 - WARNING -  * Debugger is active!
+2023-05-05 19:06:01,293 - INFO -  * Debugger PIN: 878-216-661
+2023-05-05 19:07:26,776 - INFO - Initializing the application...
+2023-05-05 19:07:26,776 - INFO - Timetable data loaded successfully.
+2023-05-05 19:07:26,785 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:07:26,786 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:07:26,786 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:07:26,786 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:07:26,786 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:07:26,786 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:07:26,786 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:07:26,786 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:07:26,786 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:07:26,786 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:07:26,800 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-05 19:07:26,800 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-05 19:07:26,801 - INFO -  * Restarting with stat
+2023-05-05 19:07:27,294 - INFO - Initializing the application...
+2023-05-05 19:07:27,294 - INFO - Timetable data loaded successfully.
+2023-05-05 19:07:27,303 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:07:27,303 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:07:27,303 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:07:27,303 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:07:27,303 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:07:27,303 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:07:27,303 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:07:27,303 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:07:27,304 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:07:27,304 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:07:27,304 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:07:27,308 - WARNING -  * Debugger is active!
+2023-05-05 19:07:27,319 - INFO -  * Debugger PIN: 878-216-661
+2023-05-05 19:07:37,686 - INFO - 127.0.0.1 - - [05/May/2023 19:07:37] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:07:39,511 - INFO - 127.0.0.1 - - [05/May/2023 19:07:39] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:11:27,951 - INFO - Occurrence 1 for class 1 scheduled
+2023-05-05 19:11:27,956 - INFO - 127.0.0.1 - - [05/May/2023 19:11:27] "POST /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:11:40,612 - INFO - Classes fetched
+2023-05-05 19:11:40,613 - INFO - 127.0.0.1 - - [05/May/2023 19:11:40] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:12:14,686 - INFO - Classes fetched
+2023-05-05 19:12:14,688 - INFO - 127.0.0.1 - - [05/May/2023 19:12:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:12:14,717 - INFO - Classes fetched
+2023-05-05 19:12:14,718 - INFO - 127.0.0.1 - - [05/May/2023 19:12:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:12:19,762 - INFO - 127.0.0.1 - - [05/May/2023 19:12:19] "OPTIONS /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:12:19,776 - INFO - 127.0.0.1 - - [05/May/2023 19:12:19] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:16:54,010 - INFO - Classes fetched
+2023-05-05 19:16:54,011 - INFO - 127.0.0.1 - - [05/May/2023 19:16:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:16:54,066 - INFO - Classes fetched
+2023-05-05 19:16:54,066 - INFO - 127.0.0.1 - - [05/May/2023 19:16:54] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:16:59,419 - INFO - 127.0.0.1 - - [05/May/2023 19:16:59] "OPTIONS /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:16:59,430 - INFO - 127.0.0.1 - - [05/May/2023 19:16:59] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:19:01,150 - INFO - Initializing the application...
+2023-05-05 19:19:01,150 - INFO - Timetable data loaded successfully.
+2023-05-05 19:19:01,159 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:19:01,159 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:19:01,159 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:19:01,159 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:19:01,159 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:19:01,159 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:19:01,159 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:19:01,160 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:19:01,160 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:19:01,160 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:19:01,160 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:19:01,160 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:19:01,160 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:19:01,160 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:19:01,160 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:19:01,160 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:19:01,173 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-05 19:19:01,174 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-05 19:19:01,175 - INFO -  * Restarting with stat
+2023-05-05 19:19:01,670 - INFO - Initializing the application...
+2023-05-05 19:19:01,670 - INFO - Timetable data loaded successfully.
+2023-05-05 19:19:01,679 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:19:01,679 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:19:01,679 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:19:01,679 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:19:01,679 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:19:01,679 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:19:01,679 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:19:01,679 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:19:01,679 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:19:01,680 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:19:01,680 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:19:01,680 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:19:01,680 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:19:01,680 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:19:01,680 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:19:01,680 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:19:01,685 - WARNING -  * Debugger is active!
+2023-05-05 19:19:01,697 - INFO -  * Debugger PIN: 878-216-661
+2023-05-05 19:19:13,969 - INFO - Classes fetched
+2023-05-05 19:19:13,971 - INFO - 127.0.0.1 - - [05/May/2023 19:19:13] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:19:14,021 - INFO - Classes fetched
+2023-05-05 19:19:14,022 - INFO - 127.0.0.1 - - [05/May/2023 19:19:14] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:19:19,783 - INFO - 127.0.0.1 - - [05/May/2023 19:19:19] "OPTIONS /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:19:19,804 - INFO - 127.0.0.1 - - [05/May/2023 19:19:19] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:21:15,129 - INFO - Initializing the application...
+2023-05-05 19:21:15,130 - INFO - Timetable data loaded successfully.
+2023-05-05 19:21:15,139 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:21:15,139 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:21:15,139 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:21:15,139 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:21:15,139 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:21:15,139 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:21:15,139 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:21:15,139 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:21:15,140 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:21:15,140 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:21:15,140 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:21:15,140 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:21:15,140 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:21:15,140 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:21:15,140 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:21:15,140 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:21:15,152 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-05 19:21:15,152 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-05 19:21:15,153 - INFO -  * Restarting with stat
+2023-05-05 19:21:15,755 - INFO - Initializing the application...
+2023-05-05 19:21:15,756 - INFO - Timetable data loaded successfully.
+2023-05-05 19:21:15,765 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-05 19:21:15,765 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-05 19:21:15,765 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-05 19:21:15,766 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-05 19:21:15,766 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-05 19:21:15,766 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-05 19:21:15,766 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-05 19:21:15,766 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-05 19:21:15,766 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-05 19:21:15,766 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-05 19:21:15,766 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-05 19:21:15,772 - WARNING -  * Debugger is active!
+2023-05-05 19:21:15,780 - INFO -  * Debugger PIN: 878-216-661
+2023-05-05 19:21:20,876 - INFO - Occurrence 1 for class 1 scheduled
+2023-05-05 19:21:20,878 - INFO - 127.0.0.1 - - [05/May/2023 19:21:20] "POST /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:27:04,860 - INFO - Classes fetched
+2023-05-05 19:27:04,862 - INFO - 127.0.0.1 - - [05/May/2023 19:27:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:27:04,894 - INFO - Classes fetched
+2023-05-05 19:27:04,895 - INFO - 127.0.0.1 - - [05/May/2023 19:27:04] "GET /api/classes HTTP/1.1" 200 -
+2023-05-05 19:27:08,567 - INFO - 127.0.0.1 - - [05/May/2023 19:27:08] "OPTIONS /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:27:08,596 - INFO - 127.0.0.1 - - [05/May/2023 19:27:08] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-05 19:27:50,519 - INFO - 127.0.0.1 - - [05/May/2023 19:27:50] "OPTIONS /api/classes/schedule HTTP/1.1" 200 -
+2023-05-05 19:27:50,534 - INFO - 127.0.0.1 - - [05/May/2023 19:27:50] "[35m[1mPOST /api/classes/schedule HTTP/1.1[0m" 500 -
+2023-05-06 17:55:01,035 - INFO - Initializing the application...
+2023-05-06 17:55:01,035 - INFO - Timetable data loaded successfully.
+2023-05-06 17:55:01,083 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 17:55:01,083 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 17:55:01,084 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 17:55:01,084 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 17:55:01,084 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 17:55:01,084 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 17:55:01,084 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 17:55:01,084 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 17:55:01,084 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 17:55:01,084 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 17:55:01,134 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 17:55:01,134 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-06 17:55:01,139 - INFO -  * Restarting with stat
+2023-05-06 17:55:01,855 - INFO - Initializing the application...
+2023-05-06 17:55:01,855 - INFO - Timetable data loaded successfully.
+2023-05-06 17:55:01,866 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 17:55:01,866 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 17:55:01,866 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 17:55:01,866 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 17:55:01,866 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 17:55:01,866 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 17:55:01,866 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 17:55:01,866 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 17:55:01,866 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 17:55:01,866 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 17:55:01,873 - WARNING -  * Debugger is active!
+2023-05-06 17:55:01,892 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 17:55:25,592 - INFO - Occurrence 1 scheduled
+2023-05-06 17:55:25,593 - INFO - 127.0.0.1 - - [06/May/2023 17:55:25] "POST /api/classes/schedule HTTP/1.1" 200 -
+2023-05-06 17:55:38,408 - INFO - Classes fetched
+2023-05-06 17:55:38,410 - INFO - 127.0.0.1 - - [06/May/2023 17:55:38] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 17:55:38,540 - INFO - Classes fetched
+2023-05-06 17:55:38,544 - INFO - 127.0.0.1 - - [06/May/2023 17:55:38] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:00:49,324 - INFO - Initializing the application...
+2023-05-06 18:00:49,325 - INFO - Timetable data loaded successfully.
+2023-05-06 18:00:49,333 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:00:49,333 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:00:49,333 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:00:49,333 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:00:49,333 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:00:49,333 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:00:49,333 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:00:49,333 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:00:49,333 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:00:49,333 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:00:49,346 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 18:00:49,346 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-06 18:00:49,347 - INFO -  * Restarting with stat
+2023-05-06 18:00:50,017 - INFO - Initializing the application...
+2023-05-06 18:00:50,017 - INFO - Timetable data loaded successfully.
+2023-05-06 18:00:50,026 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:00:50,027 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:00:50,027 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:00:50,027 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:00:50,027 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:00:50,027 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:00:50,027 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:00:50,027 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:00:50,027 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:00:50,027 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:00:50,032 - WARNING -  * Debugger is active!
+2023-05-06 18:00:50,043 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 18:01:47,776 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-06 18:01:48,418 - INFO -  * Restarting with stat
+2023-05-06 18:01:49,591 - INFO - Initializing the application...
+2023-05-06 18:01:49,591 - INFO - Timetable data loaded successfully.
+2023-05-06 18:01:49,611 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:01:49,611 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:01:49,611 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:01:49,611 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:01:49,611 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:01:49,611 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:01:49,611 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:01:49,612 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:01:49,612 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:01:49,612 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:01:49,612 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:01:49,612 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:01:49,612 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:01:49,612 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:01:49,612 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:01:49,612 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:01:49,625 - WARNING -  * Debugger is active!
+2023-05-06 18:01:49,636 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 18:01:51,909 - INFO -  * Detected change in '/Users/rafaelabdalla/Documents/Coding/applications/my-gym-app/backend/app.py', reloading
+2023-05-06 18:01:52,053 - INFO -  * Restarting with stat
+2023-05-06 18:01:52,913 - INFO - Initializing the application...
+2023-05-06 18:01:52,913 - INFO - Timetable data loaded successfully.
+2023-05-06 18:01:52,924 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:01:52,925 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:01:52,925 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:01:52,925 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:01:52,925 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:01:52,925 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:01:52,925 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:01:52,925 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:01:52,925 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:01:52,926 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:01:52,932 - WARNING -  * Debugger is active!
+2023-05-06 18:01:52,942 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 18:01:56,207 - INFO - Initializing the application...
+2023-05-06 18:01:56,207 - INFO - Timetable data loaded successfully.
+2023-05-06 18:01:56,216 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:01:56,216 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:01:56,216 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:01:56,216 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:01:56,216 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:01:56,216 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:01:56,216 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:01:56,216 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:01:56,216 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:01:56,216 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:01:56,216 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:01:56,217 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:01:56,217 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:01:56,217 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:01:56,217 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:01:56,217 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:01:56,225 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 18:01:56,225 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-06 18:01:56,225 - INFO -  * Restarting with stat
+2023-05-06 18:01:56,710 - INFO - Initializing the application...
+2023-05-06 18:01:56,711 - INFO - Timetable data loaded successfully.
+2023-05-06 18:01:56,719 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:01:56,719 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:01:56,719 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:01:56,719 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:01:56,719 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:01:56,719 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:01:56,719 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:01:56,719 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:01:56,720 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:01:56,720 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:01:56,720 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:01:56,720 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:01:56,720 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:01:56,720 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:01:56,720 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:01:56,720 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:01:56,724 - WARNING -  * Debugger is active!
+2023-05-06 18:01:56,732 - INFO -  * Debugger PIN: 878-216-661
+2023-05-06 18:02:05,950 - INFO - Classes fetched
+2023-05-06 18:02:05,951 - INFO - 127.0.0.1 - - [06/May/2023 18:02:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:02:05,981 - INFO - Classes fetched
+2023-05-06 18:02:05,981 - INFO - 127.0.0.1 - - [06/May/2023 18:02:05] "GET /api/classes HTTP/1.1" 200 -
+2023-05-06 18:05:07,276 - INFO - Initializing the application...
+2023-05-06 18:05:07,276 - INFO - Timetable data loaded successfully.
+2023-05-06 18:05:07,285 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:05:07,285 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:05:07,285 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:05:07,285 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:05:07,285 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:05:07,285 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:05:07,285 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:05:07,285 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:05:07,285 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:05:07,285 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:05:07,286 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:05:07,286 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:05:07,286 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:05:07,286 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:05:07,286 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:05:07,286 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:05:07,298 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-05-06 18:05:07,299 - INFO - [33mPress CTRL+C to quit[0m
+2023-05-06 18:05:07,300 - INFO -  * Restarting with stat
+2023-05-06 18:05:07,965 - INFO - Initializing the application...
+2023-05-06 18:05:07,965 - INFO - Timetable data loaded successfully.
+2023-05-06 18:05:07,974 - INFO - Class 1 - Yoga with 2 occurrences
+2023-05-06 18:05:07,975 - INFO - Occurrence 1: Monday, 08:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Occurrence 2: Wednesday, 09:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Class 2 - Pilates with 2 occurrences
+2023-05-06 18:05:07,975 - INFO - Occurrence 4: Thursday, 11:00, capacity: 15
+2023-05-06 18:05:07,975 - INFO - Occurrence 3: Tuesday, 10:00, capacity: 15
+2023-05-06 18:05:07,975 - INFO - Class 3 - Zumba with 0 occurrences
+2023-05-06 18:05:07,975 - INFO - Class 4 - Body Pump with 5 occurrences
+2023-05-06 18:05:07,975 - INFO - Occurrence 5: Monday, 06:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Occurrence 6: Monday, 07:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Occurrence 7: Monday, 17:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Occurrence 9: Thursday, 07:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Occurrence 8: Wednesday, 06:00, capacity: 20
+2023-05-06 18:05:07,975 - INFO - Class 5 - Spin with 0 occurrences
+2023-05-06 18:05:07,975 - INFO - Class 6 - Boot Camp with 0 occurrences
+2023-05-06 18:05:07,975 - INFO - Class 7 - Aerobics with 0 occurrences
+2023-05-06 18:05:07,980 - WARNING -  * Debugger is active!
+2023-05-06 18:05:07,990 - INFO -  * Debugger PIN: 878-216-661
