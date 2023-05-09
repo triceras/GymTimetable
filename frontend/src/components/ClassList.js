@@ -59,14 +59,9 @@ const ClassList = () => {
           <ListItem key={index}>
             <ListItemText
               primary={classItem.name}
-              //secondary={`Time: ${format(new Date(`1970-01-01T${classItem.occurrences[0].time}Z`), "hh:mm aa")} | Current capacity: ${classItem.current_capacity}/${classItem.max_capacity}`}
-              secondary={`Times: ${classItem.occurrences
-                .map((occurrence) =>
-                  format(new Date(`1970-01-01T${occurrence.time}Z`), "hh:mm aa")
-                )
-                .join(", ")} | Current capacity: ${
-                classItem.current_capacity
-              }/${classItem.max_capacity}`}
+              secondary={`Occurrences: ${classItem.occurrences.map((occurrence) =>
+                `${occurrence.day} ${format(new Date(`1970-01-01T${occurrence.time}Z`), "hh:mm aa")}`
+              ).join(", ")} | Current capacity: ${classItem.current_capacity}/${classItem.max_capacity}`}
             />
             <ListItemSecondaryAction>
               <Button
@@ -93,3 +88,4 @@ const ClassList = () => {
 };
 
 export default ClassList;
+

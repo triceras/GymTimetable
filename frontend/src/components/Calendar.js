@@ -1,3 +1,5 @@
+// src/components/Calendar.js
+
 import React, { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -12,7 +14,18 @@ const Calendar = ({ classes }) => {
   const [classData, setClassData] = useState({});
 
   const handleEventClick = (info) => {
-    setClassData(info.event.extendedProps);
+    const occurrence = info.event.extendedProps.occurrence;
+    const classItem = info.event.extendedProps.classItem; // Use classItem instead of occurrence.class_item
+    const classData = {
+      id: classItem.id,
+      name: classItem.name,
+      current_capacity: occurrence.current_capacity,
+      max_capacity: occurrence.max_capacity
+    };
+    setClassData({
+      ...info.event.extendedProps,
+      classData
+    });
     setOpen(true);
   };
 
@@ -23,30 +36,49 @@ const Calendar = ({ classes }) => {
   const getClassColor = (classId) => {
     const colors = ['#F79C1E', '#1E90F7', '#F71E45', '#45F71E', '#1EF7DC'];
     return colors[classId % colors.length];
-  };  
-
-  const getEventDates = (occurrence) => {
-    const start = moment()
-      .startOf('week')
-      .day(occurrence.day.toLowerCase())
-      .hour(moment(occurrence.time, 'HH:mm').hour())
-      .minute(moment(occurrence.time, 'HH:mm').minute());
-    const end = start.clone().add(1, 'hours');
-    return { start: start.toDate(), end: end.toDate() };
   };
 
+  const getEventDates = (classItem, occurrence, classData) => {
+    const dayIndex = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].indexOf(occurrence.day.toLowerCase());
+    const startTime = moment.duration(occurrence.time);
+    const start = moment().startOf('week').add(dayIndex, 'days').add(startTime);
+    const end = start.clone().add(1, 'hours').toDate();
+    const newClassData = { // Include the current capacity and max capacity in the class data
+      id: classItem.id,
+      name: classItem.name,
+      current_capacity: occurrence.current_capacity,
+      max_capacity: occurrence.max_capacity,
+    };
+    return {
+      start: start.toDate(),
+      end,
+      id: classItem.id,
+      title: classItem.name,
+      occurrenceId: occurrence.id,
+      occurrence: { ...occurrence, class_name: classItem.name }, // Include the occurrence data in the event, along with the class name
+      color: getClassColor(classItem.id),
+      extendedProps: {
+        occurrence,
+        classData: newClassData,
+        classItem, // Include the class item data in the event's extendedProps
+      },
+    };
+  };
+  
   const events = classes.flatMap((classItem) => {
     return classItem.occurrences.map((occurrence) => {
-      const { start, end } = getEventDates(occurrence);
+      const { start, end } = getEventDates(classItem, occurrence, classItem.classData);
       return {
         title: classItem.name,
         start,
         end,
         id: occurrence.id,
         allDay: false,
-        className: classItem.name,
-        current_capacity: occurrence.current_capacity,
-        max_capacity: occurrence.max_capacity,
+        extendedProps: {
+          occurrence,
+          classItem, // Pass classItem along with the occurrence data
+          classData: classItem.classData,
+        },
         color: getClassColor(classItem.id),
       };
     });
@@ -83,3 +115,4 @@ const Calendar = ({ classes }) => {
 };
 
 export default Calendar;
+
