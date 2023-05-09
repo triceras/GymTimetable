@@ -84,6 +84,24 @@ const Calendar = ({ classes }) => {
     });
   });
 
+  const handleEventMouseEnter = (info) => {
+    const eventEl = info.el;
+    eventEl.style.zIndex = 1;
+    eventEl.style.transform = 'scale(1.1)';
+  };
+
+  const handleEventMouseLeave = (info) => {
+    const eventEl = info.el;
+    eventEl.style.zIndex = '';
+    eventEl.style.transform = '';
+  };
+
+  const handleEventDidMount = (info) => {
+    const eventEl = info.el;
+    eventEl.style.zIndex = '';
+    eventEl.style.transform = '';
+  };
+
   return (
     <>
       <FullCalendar
@@ -100,9 +118,13 @@ const Calendar = ({ classes }) => {
           week: 'week',
           day: 'day',
         }}
-        weekends={true}
+        slotMinTime="06:00:00"
+        slotMaxTime="22:00:00"
         events={events}
         eventClick={handleEventClick}
+        eventMouseEnter={handleEventMouseEnter}
+        eventMouseLeave={handleEventMouseLeave}
+        eventDidMount={handleEventDidMount}
       />
       <ClassDetails
         open={open}

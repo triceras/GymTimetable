@@ -76,43 +76,48 @@ def initialize_app():
     logger.info("Initializing the application...")
     # Load timetable data, populate the database, etc.
     logger.info("Timetable data loaded successfully.")
+
+    # Drop all tables
+    db.drop_all()
+
+    # Create all tables
     db.create_all()
-    if not GymClass.query.first():
-        logging.info("Initializing the database...")
 
-        try:
-            with open("timetable.json", "r") as f:
-                timetable = json.load(f)
-        except FileNotFoundError:
-            logging.error("Failed to load timetable.json file")
-            return
+    try:
+        logging.info("Loading timetable data from JSON file...")
+        with open("timetable.json", "r") as f:
+            timetable = json.load(f)
+            logger.info(f"Timetable data: {timetable}")
+    except FileNotFoundError:
+        logging.error("Failed to load timetable.json file")
+        return
 
-        logging.info(f"Timetable data: {timetable}")
+    logging.info(f"Timetable data: {timetable}")
 
-        for class_info in timetable:
-            occurrences_data = class_info.pop("occurrences")
-            logging.info(f"{class_info['name']} occurrences data: {occurrences_data}")
+    for class_info in timetable:
+        occurrences_data = class_info.pop("occurrences")
+        logging.info(f"{class_info['name']} occurrences data: {occurrences_data}")
 
-            new_class = GymClass(name=class_info['name'])
-            db.session.add(new_class)
-            db.session.flush()
+        new_class = GymClass(name=class_info['name'])
+        db.session.add(new_class)
+        db.session.flush()
 
-            occurrences = []
-            for occurrence_info in occurrences_data:
-                new_occurrence = Occurrence(
-                    gym_class_id=new_class.id,
-                    day=occurrence_info['day'],
-                    time=occurrence_info['time'],
-                    max_capacity=occurrence_info['max_capacity'],
-                    current_capacity=occurrence_info['current_capacity']
-                )
+        occurrences = []
+        for occurrence_info in occurrences_data:
+            new_occurrence = Occurrence(
+                gym_class_id=new_class.id,
+                day=occurrence_info['day'],
+                time=occurrence_info['time'],
+                max_capacity=occurrence_info['max_capacity'],
+                current_capacity=occurrence_info['current_capacity']
+            )
 
-                occurrences.append(new_occurrence)
+            occurrences.append(new_occurrence)
 
-            new_class.occurrences = occurrences
-            db.session.commit()
+        new_class.occurrences = occurrences
+        db.session.commit()
 
-        logging.info("Database initialized and populated with dummy timetable")
+    logging.info("Database initialized and populated with timetable data")
 
     # Log class and occurrences information
     all_classes = GymClass.query.options(joinedload(GymClass.occurrences)).all()
@@ -156,6 +161,12 @@ def schedule_class():
     else:
         logging.info(f"Failed to schedule occurrence {occurrence_id}: Class is fully booked")
         return jsonify({"error": "Class is fully booked"}), 400
+
+@app.route("/api/initialize", methods=["POST"])
+def initialize():
+    with app.app_context():
+        initialize_app()
+    return jsonify({"message": "Application initialized"})
 
 
 if __name__ == '__main__':
