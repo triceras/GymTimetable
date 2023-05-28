@@ -14,19 +14,22 @@ const Calendar = ({ classes }) => {
   const [classData, setClassData] = useState({});
 
   const handleEventClick = (info) => {
-    const occurrence = info.event.extendedProps.occurrence;
-    const classItem = info.event.extendedProps.classItem; // Use classItem instead of occurrence.class_item
-    const classData = {
-      id: classItem.id,
-      name: classItem.name,
-      current_capacity: occurrence.current_capacity,
-      max_capacity: occurrence.max_capacity
-    };
-    setClassData({
-      ...info.event.extendedProps,
-      classData
-    });
-    setOpen(true);
+    if (!isAuthenticated) {
+        const occurrence = info.event.extendedProps.occurrence;
+        const classItem = info.event.extendedProps.classItem;
+        const classData = {
+          id: classItem.id,
+          name: classItem.name,
+          current_capacity: occurrence.current_capacity,
+          max_capacity: occurrence.max_capacity
+        };
+        setClassData({
+          ...info.event.extendedProps,
+          classData
+        });
+        setOpen(true);
+      return;
+    }
   };
 
   const handleClose = () => {
@@ -64,7 +67,7 @@ const Calendar = ({ classes }) => {
       },
     };
   };
-  
+
   const events = classes.flatMap((classItem) => {
     return classItem.occurrences.map((occurrence) => {
       const { start, end } = getEventDates(classItem, occurrence, classItem.classData);
@@ -76,7 +79,7 @@ const Calendar = ({ classes }) => {
         allDay: false,
         extendedProps: {
           occurrence,
-          classItem, // Pass classItem along with the occurrence data
+          classItem,
           classData: classItem.classData,
         },
         color: getClassColor(classItem.id),

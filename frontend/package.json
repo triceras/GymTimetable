@@ -7,14 +7,19 @@
     "@fullcalendar/react": "^6.1.6",
     "@fullcalendar/timegrid": "^6.1.6",
     "@mui/material": "^5.12.2",
+    "@react-oauth/google": "^0.11.0",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
+    "dotenv": "^16.0.3",
     "moment": "^2.29.4",
     "onesignal": "^0.1.2",
     "react": "^18.2.0",
     "react-big-calendar": "^1.6.9",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "^5.0.1",
+    "react-social-login-buttons": "^3.6.1",
+    "reactjs-social-login": "^2.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1"
   }
 }

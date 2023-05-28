@@ -17,8 +17,11 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleScheduleClass = async () => {
-    if (!classData) {
-      console.error("Class data is not available");
+    if (!isAuthenticated) {
+      if (!classData) {
+        console.error("Class data is not available");
+        return;
+      }
       return;
     }
   
