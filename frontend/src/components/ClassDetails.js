@@ -20,40 +20,40 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
 
   const handleScheduleClass = async () => {
     if (!isAuthenticated) {
-      if (!classData) {
-        console.error("Class data is not available");
-        return;
-      }
+      console.error("User is not authenticated");
       return;
     }
   
-    // Find the occurrence with the same id as the clicked event
-    const occurrenceToSchedule = classData.classItem.occurrences.find(
-      (occurrence) => occurrence.id === classData.occurrence.id
-    );
+    if (!classData || !classData.occurrence || !classData.classItem) {
+      console.error("Class data, occurrence data, or class item data is not available");
+      return;
+    }
+
+    console.log("Class data =>", classData);
+  
+    const { occurrence, classItem } = classData;
+
+    console.log("ClassItem =>", classItem);
+    console.log("ClassItem Name =>", classItem.name);
   
     // Check if there is room in the class
-    if (
-      occurrenceToSchedule.current_capacity <
-      occurrenceToSchedule.max_capacity
-    ) {
+    if (occurrence.current_capacity < occurrence.max_capacity) {
       // Call the API to schedule the class
       try {
-        // Replace this URL with the actual backend API endpoint
-        const url = `http://localhost:5000/api/classes/schedule`;
-        // Using Axios
-        const response = await axios.post(url, {
-          class_id: classData.id,
-          occurrence_id: occurrenceToSchedule.id,
-          class_name: classData.name, // Add class name to payload
-          current_capacity: occurrenceToSchedule.currentCapacity, // Use occurrenceToSchedule instead of classData
-          max_capacity: occurrenceToSchedule.max_capacity, // Use occurrenceToSchedule instead of classData
-        });
-        const data = response.data;
+        const response = await axios.post(
+          "http://localhost:5000/api/classes/schedule",
+          {
+            class_id: classItem.id,
+            occurrence_id: occurrence.id,
+            class_name: classItem.name, // Pass the class name to the API
+          }
+        );
   
-        if (data.message === "Class scheduled successfully") {
-          // Update the occurrenceToSchedule object with the new current_capacity value
-          occurrenceToSchedule.current_capacity += 1;
+        const { message } = response.data;
+  
+        if (message === "Class scheduled successfully") {
+          // Update the occurrence object with the new current_capacity value
+          occurrence.current_capacity += 1;
           setSchedulingResult("success");
           onClassUpdated();
         } else {
@@ -67,8 +67,8 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       setSchedulingResult("full");
     }
     setSnackbarOpen(true);
-  };
-  
+  };  
+
 
   const handleClose = () => {
     setSchedulingResult(null);
@@ -78,6 +78,9 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
+  // Check if name of the class is being passed corrrectly
+  console.log("classData.classItem:", classData.classItem);
 
   return (
     <>
@@ -109,13 +112,21 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       >
         <Alert
           onClose={handleSnackbarClose}
-          severity={schedulingResult === 'success' ? 'success' : 'error'}
+          severity={
+            schedulingResult === 'success'
+              ? 'success'
+              : schedulingResult === 'failed'
+              ? 'error'
+              : 'info' // Add this line to handle the 'full' case
+          }
         >
-          {schedulingResult === 'success'
-            ? `Class ${classData.name} scheduled successfully!` 
-            : schedulingResult === 'failed' 
-            ? `Error scheduling class ${classData.name}. Please try again later.`
-            : `Class ${classData.name} is full. Please try again later.`}
+          {schedulingResult === 'success' && classData.classItem
+            ? `Class ${classData.classItem.name} scheduled successfully!`
+            : schedulingResult === 'failed' && classData.classItem
+            ? `Error scheduling class ${classData.classItem.name}. Please try again later.`
+            : classData.classItem
+            ? `Class ${classData.classItem.name} is full. Please try again later.`
+            : `Class data is not available`}
         </Alert>
       </Snackbar>
     </>

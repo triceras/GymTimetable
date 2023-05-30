@@ -15,21 +15,35 @@ const Calendar = ({ classes }) => {
   const [classData, setClassData] = useState({});
   const { isAuthenticated } = useAuth();
 
+  // const handleEventClick = (info) => {
+  //   const occurrence = info.event.extendedProps.occurrence;
+  //   const classItem = info.event.extendedProps.classItem;
+  //   const newClassData = {
+  //     id: classItem.id,
+  //     name: classItem.name,
+  //     current_capacity: occurrence.current_capacity,
+  //     max_capacity: occurrence.max_capacity
+  //   };
+  
+  //   setClassData({
+  //     ...info.event.extendedProps,
+  //     classData: newClassData
+  //   });
+  //   setOpen(true);
+  // };
+
   const handleEventClick = (info) => {
     const occurrence = info.event.extendedProps.occurrence;
     const classItem = info.event.extendedProps.classItem;
-    const classData = {
-      id: classItem.id,
-      name: classItem.name,
-      current_capacity: occurrence.current_capacity,
-      max_capacity: occurrence.max_capacity
-    };
+  
     setClassData({
-      ...info.event.extendedProps,
-      classData
+      occurrence,
+      classItem: { ...classItem, name: classItem.name },
     });
     setOpen(true);
   };
+  
+
 
   const handleClose = () => {
     setOpen(false);
@@ -40,17 +54,12 @@ const Calendar = ({ classes }) => {
     return colors[classId % colors.length];
   };
 
-  const getEventDates = (classItem, occurrence, classData) => {
+  const getEventDates = (classItem, occurrence) => {
     const dayIndex = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].indexOf(occurrence.day.toLowerCase());
     const startTime = moment.duration(occurrence.time);
     const start = moment().startOf('week').add(dayIndex, 'days').add(startTime);
     const end = start.clone().add(1, 'hours').toDate();
-    const newClassData = {
-      id: classItem.id,
-      name: classItem.name,
-      current_capacity: occurrence.current_capacity,
-      max_capacity: occurrence.max_capacity,
-    };
+  
     return {
       start: start.toDate(),
       end,
@@ -61,11 +70,10 @@ const Calendar = ({ classes }) => {
       color: getClassColor(classItem.id),
       extendedProps: {
         occurrence,
-        classData: newClassData,
-        classItem,
+        classItem: { ...classItem, name: classItem.name },
       },
     };
-  };
+  };   
 
   const events = classes.flatMap((classItem) => {
     return classItem.occurrences.map((occurrence) => {
