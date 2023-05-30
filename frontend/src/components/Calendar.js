@@ -8,28 +8,27 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import moment from 'moment';
 import ClassDetails from './ClassDetails';
 import './CalendarStyles.css';
+import { useAuth } from '../contexts/AuthContext';
 
 const Calendar = ({ classes }) => {
   const [open, setOpen] = useState(false);
   const [classData, setClassData] = useState({});
+  const { isAuthenticated } = useAuth();
 
   const handleEventClick = (info) => {
-    if (!isAuthenticated) {
-        const occurrence = info.event.extendedProps.occurrence;
-        const classItem = info.event.extendedProps.classItem;
-        const classData = {
-          id: classItem.id,
-          name: classItem.name,
-          current_capacity: occurrence.current_capacity,
-          max_capacity: occurrence.max_capacity
-        };
-        setClassData({
-          ...info.event.extendedProps,
-          classData
-        });
-        setOpen(true);
-      return;
-    }
+    const occurrence = info.event.extendedProps.occurrence;
+    const classItem = info.event.extendedProps.classItem;
+    const classData = {
+      id: classItem.id,
+      name: classItem.name,
+      current_capacity: occurrence.current_capacity,
+      max_capacity: occurrence.max_capacity
+    };
+    setClassData({
+      ...info.event.extendedProps,
+      classData
+    });
+    setOpen(true);
   };
 
   const handleClose = () => {
@@ -46,7 +45,7 @@ const Calendar = ({ classes }) => {
     const startTime = moment.duration(occurrence.time);
     const start = moment().startOf('week').add(dayIndex, 'days').add(startTime);
     const end = start.clone().add(1, 'hours').toDate();
-    const newClassData = { // Include the current capacity and max capacity in the class data
+    const newClassData = {
       id: classItem.id,
       name: classItem.name,
       current_capacity: occurrence.current_capacity,
@@ -58,12 +57,12 @@ const Calendar = ({ classes }) => {
       id: classItem.id,
       title: classItem.name,
       occurrenceId: occurrence.id,
-      occurrence: { ...occurrence, class_name: classItem.name }, // Include the occurrence data in the event, along with the class name
+      occurrence: { ...occurrence, class_name: classItem.name },
       color: getClassColor(classItem.id),
       extendedProps: {
         occurrence,
         classData: newClassData,
-        classItem, // Include the class item data in the event's extendedProps
+        classItem,
       },
     };
   };
@@ -134,10 +133,10 @@ const Calendar = ({ classes }) => {
         classData={classData}
         onClose={handleClose}
         onClassUpdated={handleClose}
+        isAuthenticated={isAuthenticated}
       />
     </>
   );
 };
 
 export default Calendar;
-

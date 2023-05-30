@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Calendar from './components/Calendar';
 import ClassList from './components/ClassList';
 import { useAuth } from "./contexts/AuthContext";
-import { GoogleLoginButton } from 'react-social-login-buttons';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import Login from './components/Login';
 import axios from 'axios';
@@ -19,7 +18,7 @@ import axios from 'axios';
 const theme = createTheme();
 
 function App() {
-  const { isAuthenticated, handleLoginSuccess } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   // Fetch or obtain the classes data
   const [classes, setClasses] = useState([]);
@@ -34,10 +33,10 @@ function App() {
         console.error('Error fetching classes:', error);
       }
     };
-  
+
     fetchClasses();
   }, []);
-  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -50,13 +49,15 @@ function App() {
               </Typography>
               {isAuthenticated ? (
                 <GoogleLogin
-                  onSuccess={handleLoginSuccess}
+                  onSuccess={() => {}}
                   render={(renderProps) => (
-                    <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                    <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                      Google Login
+                    </button>
                   )}
                 />
               ) : (
-                <Navigate to="/login" />
+                <Navigate to="/login" replace />
               )}
             </Toolbar>
           </AppBar>
@@ -76,12 +77,12 @@ function HomePage({ isAuthenticated, classes }) {
   return isAuthenticated ? (
     <>
       <main>
-        <Calendar classes={classes} isAuthenticated={isAuthenticated}/>
+        <Calendar classes={classes} isAuthenticated={isAuthenticated} />
       </main>
       {/* <ClassList /> */}
     </>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" replace />
   );
 }
 

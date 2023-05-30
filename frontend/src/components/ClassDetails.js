@@ -11,10 +11,12 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { format } from "date-fns";
+import { useAuth } from '../contexts/AuthContext';
 
 const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
   const [schedulingResult, setSchedulingResult] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const handleScheduleClass = async () => {
     if (!isAuthenticated) {
