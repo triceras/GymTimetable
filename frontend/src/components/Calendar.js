@@ -15,23 +15,6 @@ const Calendar = ({ classes }) => {
   const [classData, setClassData] = useState({});
   const { isAuthenticated } = useAuth();
 
-  // const handleEventClick = (info) => {
-  //   const occurrence = info.event.extendedProps.occurrence;
-  //   const classItem = info.event.extendedProps.classItem;
-  //   const newClassData = {
-  //     id: classItem.id,
-  //     name: classItem.name,
-  //     current_capacity: occurrence.current_capacity,
-  //     max_capacity: occurrence.max_capacity
-  //   };
-  
-  //   setClassData({
-  //     ...info.event.extendedProps,
-  //     classData: newClassData
-  //   });
-  //   setOpen(true);
-  // };
-
   const handleEventClick = (info) => {
     const occurrence = info.event.extendedProps.occurrence;
     const classItem = info.event.extendedProps.classItem;
@@ -43,7 +26,6 @@ const Calendar = ({ classes }) => {
     setOpen(true);
   };
   
-
 
   const handleClose = () => {
     setOpen(false);

@@ -28,13 +28,8 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       console.error("Class data, occurrence data, or class item data is not available");
       return;
     }
-
-    console.log("Class data =>", classData);
   
     const { occurrence, classItem } = classData;
-
-    console.log("ClassItem =>", classItem);
-    console.log("ClassItem Name =>", classItem.name);
   
     // Check if there is room in the class
     if (occurrence.current_capacity < occurrence.max_capacity) {
@@ -78,9 +73,6 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
-
-  // Check if name of the class is being passed corrrectly
-  console.log("classData.classItem:", classData.classItem);
 
   return (
     <>
