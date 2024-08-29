@@ -7,19 +7,21 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate , useNavigate } from 'react-router-dom';
 import Calendar from './components/Calendar';
-import ClassList from './components/ClassList';
 import { useAuth } from "./contexts/AuthContext";
 import { GoogleLoginButton } from 'react-social-login-buttons';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, GoogleLogin, googleLogout } from '@react-oauth/google';
 import Login from './components/Login';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+
 
 const theme = createTheme();
 
 function App() {
-  const { isAuthenticated, handleLoginSuccess } = useAuth();
+  const { isAuthenticated, handleLoginSuccess, logout } = useAuth();
+  const navigate = useNavigate(); 
 
   // Fetch or obtain the classes data
   const [classes, setClasses] = useState([]);
@@ -37,11 +39,17 @@ function App() {
   
     fetchClasses();
   }, []);
-  
+
+  const handleLogout = () => {
+    console.log('Logging out');
+    googleLogout();
+    logout();
+    navigate('/login');
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
           <AppBar position="static">
             <Toolbar>
@@ -49,14 +57,16 @@ function App() {
                 Gym Class Scheduler
               </Typography>
               {isAuthenticated ? (
+                <Button variant="contained" color="secondary" onClick={handleLogout}> 
+                  Logout
+                </Button>
+              ) : (
                 <GoogleLogin
                   onSuccess={handleLoginSuccess}
                   render={(renderProps) => (
-                    <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                      <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled} />
                   )}
                 />
-              ) : (
-                <Navigate to="/login" />
               )}
             </Toolbar>
           </AppBar>
@@ -67,22 +77,22 @@ function App() {
             </Routes>
           </Container>
         </GoogleOAuthProvider>
-      </Router>
     </ThemeProvider>
   );
 }
 
 function HomePage({ isAuthenticated, classes }) {
   return isAuthenticated ? (
-    <>
+    <div> 
       <main>
-        <Calendar classes={classes} isAuthenticated={isAuthenticated}/>
-      </main>
-      {/* <ClassList /> */}
-    </>
+        <Calendar classes={classes} isAuthenticated={isAuthenticated} /> 
+      </main> 
+      {/* <ClassList />  */} 
+    </div> 
   ) : (
     <Navigate to="/login" />
   );
 }
+
 
 export default App;
