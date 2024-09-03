@@ -1,5 +1,3 @@
-// src/components/ClassDetails.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
@@ -10,47 +8,47 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import { format } from "date-fns";
+import Typography from '@mui/material/Typography';
+import { useAuth } from '../contexts/AuthContext';
 
 const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
   const [schedulingResult, setSchedulingResult] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const handleScheduleClass = async () => {
     if (!isAuthenticated) {
-      if (!classData) {
-        console.error("Class data is not available");
-        return;
-      }
+      console.error("User is not authenticated");
       return;
     }
-  
-    // Find the occurrence with the same id as the clicked event
+
+    if (!classData || !classData.classItem) {
+      console.error("Class data is not available");
+      return;
+    }
+
     const occurrenceToSchedule = classData.classItem.occurrences.find(
       (occurrence) => occurrence.id === classData.occurrence.id
     );
-  
-    // Check if there is room in the class
-    if (
-      occurrenceToSchedule.current_capacity <
-      occurrenceToSchedule.max_capacity
-    ) {
-      // Call the API to schedule the class
+
+    if (!occurrenceToSchedule) {
+      console.error("Occurrence not found");
+      return;
+    }
+
+    if (occurrenceToSchedule.current_capacity < occurrenceToSchedule.max_capacity) {
       try {
-        // Replace this URL with the actual backend API endpoint
         const url = `http://localhost:5000/api/classes/schedule`;
-        // Using Axios
         const response = await axios.post(url, {
-          class_id: classData.id,
+          class_id: classData.classItem.id,
           occurrence_id: occurrenceToSchedule.id,
-          class_name: classData.name, // Add class name to payload
-          current_capacity: occurrenceToSchedule.currentCapacity, // Use occurrenceToSchedule instead of classData
-          max_capacity: occurrenceToSchedule.max_capacity, // Use occurrenceToSchedule instead of classData
+          class_name: classData.classItem.name,
+          current_capacity: occurrenceToSchedule.current_capacity,
+          max_capacity: occurrenceToSchedule.max_capacity,
         });
         const data = response.data;
-  
+
         if (data.message === "Class scheduled successfully") {
-          // Update the occurrenceToSchedule object with the new current_capacity value
           occurrenceToSchedule.current_capacity += 1;
           setSchedulingResult("success");
           onClassUpdated();
@@ -66,7 +64,6 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
     }
     setSnackbarOpen(true);
   };
-  
 
   const handleClose = () => {
     setSchedulingResult(null);
@@ -77,23 +74,32 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
     setSnackbarOpen(false);
   };
 
+  if (!classData || !classData.classItem) {
+    return null;
+  }
+
+  const isClassFull = classData.occurrence && 
+    classData.occurrence.current_capacity >= classData.occurrence.max_capacity;
+
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{classData.name}</DialogTitle>
+        <DialogTitle>{classData.classItem.name}</DialogTitle>
         <DialogContent>
           <DialogContentText>
+            Current capacity: {classData.occurrence ? `${classData.occurrence.current_capacity}/${classData.occurrence.max_capacity}` : "N/A"}
             <br />
-            Current capacity: {classData && classData.occurrence && classData.occurrence.current_capacity !== undefined && classData.occurrence.max_capacity !== undefined ? `${classData.occurrence.current_capacity}/${classData.occurrence.max_capacity}` : ""}
-            <br />
-            Occurrence: {classData && classData.occurrence
-              ? `${classData.occurrence.day} ${classData.occurrence.time}`
-              : ""}
+            Occurrence: {classData.occurrence ? `${classData.occurrence.day} ${classData.occurrence.time}` : "N/A"}
+            {isClassFull && (
+              <Typography color="error" style={{ marginTop: '10px' }}>
+                Sorry. This class is fully booked.
+              </Typography>
+            )}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          {schedulingResult !== 'full' && (
+          {!isClassFull && (
             <Button onClick={handleScheduleClass} color="primary">
               Schedule Class
             </Button>
@@ -110,10 +116,10 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
           severity={schedulingResult === 'success' ? 'success' : 'error'}
         >
           {schedulingResult === 'success'
-            ? `Class ${classData.name} scheduled successfully!` 
-            : schedulingResult === 'failed' 
-            ? `Error scheduling class ${classData.name}. Please try again later.`
-            : `Class ${classData.name} is full. Please try again later.`}
+            ? `You successfully booked the ${classData.classItem.name} class!`
+            : schedulingResult === 'failed'
+            ? `Error scheduling ${classData.classItem.name}. Please try again later.`
+            : `${classData.classItem.name} is full. Please try again later.`}
         </Alert>
       </Snackbar>
     </>

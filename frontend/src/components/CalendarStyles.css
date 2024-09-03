@@ -1,13 +1,21 @@
-/* Make the event box have round edges */
 .fc-event {
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Make the class name bold and centered in the box */
 .fc-event-title {
   font-weight: bold;
   text-align: center;
+}
+
+.fc-event:hover {
+  transform: scale(1.3); /* Make the box jump and become bigger */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
+  z-index: 1000; /* Bring the box to the front */
 }

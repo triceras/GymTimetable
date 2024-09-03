@@ -1,4 +1,5 @@
-backend/venv/**
+backend/new_venv/**
 frontend/.env
 .vscode
 env
+backend/venv/**

@@ -1,0 +1,11 @@
+.profile-menu-container {
+    position: relative;
+  }
+  
+  .profile-icon {
+    cursor: pointer !important;
+  }
+  
+  .MuiMenuItem-root {
+    cursor: pointer !important;
+  }
