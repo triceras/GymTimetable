@@ -1,21 +1,37 @@
 .fc-event {
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.fc-event-title {
-  font-weight: bold;
-  text-align: center;
 }
 
 .fc-event:hover {
-  transform: scale(1.3); /* Make the box jump and become bigger */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
-  z-index: 1000; /* Bring the box to the front */
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 200;
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 4px;
+}
+
+.event-time {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.event-instructor {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.event-class-name {
+  font-weight: bold;
+  font-size: 1em;
 }

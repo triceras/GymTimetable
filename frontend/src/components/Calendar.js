@@ -15,10 +15,13 @@ const Calendar = ({ classes, selectedClass }) => {
   const [error, setError] = useState(null);
   const [confirmationMessage, setConfirmationMessage] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
+  //const formattedTime = moment(occurrence.time, 'HH:mm').format('HH:mm:ss');
 
   useEffect(() => {
+    console.log('Classes prop in Calendar:', classes);
     if (classes && classes.length > 0) {
       const newEvents = generateEvents(classes, selectedClass);
+      console.log('New events:', newEvents);
       setEvents(newEvents);
     }
   }, [classes, selectedClass]);
@@ -30,15 +33,23 @@ const Calendar = ({ classes, selectedClass }) => {
 
   const getEventDates = (classItem, occurrence) => {
     const dayIndex = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].indexOf(occurrence.day.toLowerCase());
-    const startTime = moment.duration(occurrence.time);
-    const start = moment().startOf('week').add(dayIndex, 'days').add(startTime);
-    const end = start.clone().add(1, 'hours').toDate();
+
+    // Format the time here if needed
+    const formattedTime = moment(occurrence.time, 'HH:mm').format('HH:mm:ss');
+
+    const startTime = moment(formattedTime, 'HH:mm:ss');
+    const start = moment().startOf('week').add(dayIndex, 'days').set({
+      hour: startTime.hours(),
+      minute: startTime.minutes(),
+      second: startTime.seconds()
+    });
+    const end = start.clone().add(1, 'hours');
 
     return {
       start: start.toDate(),
-      end,
+      end: end.toDate(),
       id: classItem.id,
-      title: classItem.name,
+      title: `${occurrence.time}\n${classItem.instructor || 'No instructor'}\n${classItem.name}`,
       occurrenceId: occurrence.id,
       occurrence: {...occurrence, class_name: classItem.name },
       color: getClassColor(classItem.id),
@@ -57,7 +68,7 @@ const Calendar = ({ classes, selectedClass }) => {
       return classItem.occurrences.map((occurrence) => {
         const { start, end } = getEventDates(classItem, occurrence);
         return {
-          title: classItem.name,
+          title: `${occurrence.time}\n${classItem.instructor || 'No instructor'}\n${classItem.name}`,
           start,
           end,
           id: occurrence.id,
@@ -65,7 +76,6 @@ const Calendar = ({ classes, selectedClass }) => {
           extendedProps: {
             occurrence,
             classItem,
-            classData: classItem.classData,
           },
           color: getClassColor(classItem.id),
         };
@@ -90,14 +100,22 @@ const Calendar = ({ classes, selectedClass }) => {
   const handleScheduleClass = async () => {
     if (selectedEvent) {
       try {
-        const response = await axios.post('http://localhost:5000/api/classes/schedule', {
-          occurrence_id: selectedEvent.occurrence.id
-        });
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          setError('You are not authenticated. Please log in again.');
+          return;
+        }
+  
+        const response = await axios.post('http://localhost:5000/api/classes/schedule', 
+          { occurrence_id: selectedEvent.occurrence.id },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+  
         if (response.data.success) {
           setIsDialogOpen(false);
           setConfirmationMessage(`You have successfully booked ${selectedEvent.title} at ${selectedEvent.start.toLocaleTimeString()}`);
           setShowConfirmation(true);
-          
+  
           // Update the local state with the new capacity
           const updatedEvents = events.map(event => {
             if (event.id === selectedEvent.occurrence.id) {
@@ -115,24 +133,29 @@ const Calendar = ({ classes, selectedClass }) => {
             return event;
           });
           setEvents(updatedEvents);
-          
+  
           // Update the selectedEvent with the new capacity
-          setSelectedEvent({
-            ...selectedEvent,
+          setSelectedEvent(prevState => ({
+            ...prevState,
             occurrence: {
-              ...selectedEvent.occurrence,
+              ...prevState.occurrence,
               current_capacity: response.data.current_capacity
             }
-          });
+          }));
+  
+          // Optionally, you can refresh the entire events list here
+          // fetchEvents();
         } else {
           setError(response.data.message);
         }
       } catch (error) {
         console.error('Error scheduling class:', error);
-        setError('Failed to schedule class. Please try again.');
+        setError(error.response?.data?.message || 'Failed to schedule class. Please try again.');
       }
     }
   };
+
+  console.log('Rendering calendar with events:', events);
 
   return (
     <>
@@ -154,6 +177,17 @@ const Calendar = ({ classes, selectedClass }) => {
         slotMaxTime="22:00:00"
         events={events}
         eventClick={handleEventClick}
+        eventContent={(eventInfo) => {
+          const [time, instructor, className] = eventInfo.event.title.split('\n');
+          return (
+            <div className="event-content">
+              <div className="event-time">{time}</div>
+              <div className="event-instructor">{instructor}</div>
+              <div className="event-class-name">{className}</div>
+            </div>
+          );
+        }}
+        eventClassNames="fc-event"
       />
       {showConfirmation && (
         <Snackbar

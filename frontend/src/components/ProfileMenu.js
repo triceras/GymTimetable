@@ -11,8 +11,13 @@ const ProfileMenu = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleProfileClick = () => {
+  const handleMyProfileClick = () => {
     navigate('/profile');
+    handleClose();
+  };
+
+  const handleBookingsClick = () => {
+    navigate('/bookings');
     handleClose();
   };
 
@@ -20,32 +25,32 @@ const ProfileMenu = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMouseLeave = () => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
   const handleLogout = () => {
     logout();
     navigate('/login');
-    setAnchorEl(null);
+    handleClose();
   };
 
   return (
-    <div className="profile-menu-container" onMouseLeave={handleMouseLeave}>
+    <div className="profile-menu-container" onMouseLeave={handleClose}>
       <IconButton
         className="profile-icon"
         onMouseEnter={handleMouseEnter}
       >
         <Avatar>
-            <PersonIcon />
+          <PersonIcon />
         </Avatar>
       </IconButton>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={handleMouseLeave}
+        onClose={handleClose}
         MenuListProps={{
-          onMouseLeave: handleMouseLeave
+          onMouseLeave: handleClose
         }}
         anchorOrigin={{
           vertical: 'bottom',
@@ -56,8 +61,8 @@ const ProfileMenu = () => {
           horizontal: 'right',
         }}
       >
-        <MenuItem onClick={() => navigate('/profile')}>My Profile</MenuItem>
-        <MenuItem onClick={() => navigate('/bookings')}>Bookings</MenuItem>
+        <MenuItem onClick={handleMyProfileClick}>Profile</MenuItem>
+        <MenuItem onClick={handleBookingsClick}>Bookings</MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </div>
