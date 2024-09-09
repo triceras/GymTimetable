@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
-import { Box, TextField, Button, Typography } from '@mui/material';
-import axios from 'axios';
+import { Box, TextField, Button, Typography, Container } from '@mui/material';
+
 
 const Login = () => {
   const { login, googleLogin } = useAuth();
@@ -12,17 +12,8 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLoginFailure = (response) => {
-    console.log('Login failed:', response);
-    setError('Login failed. Please try again.');
-  };
-
-  const handleLoginSuccess = (response) => {
-    console.log('Login succeeded:', response);
-    navigate('/');
-  };
-
-  const handleManualLogin = async () => {
+  const handleManualLogin = async (e) => {
+    e.preventDefault();
     if (!username || !password) {
       setError('Please enter a username and password.');
       return;
@@ -30,7 +21,7 @@ const Login = () => {
 
     try {
       await login(username, password);
-      handleLoginSuccess();
+      navigate('/');
     } catch (error) {
       console.error('Error logging in:', error);
       setError(error.response?.data?.message || 'Login failed. Please try again.');
@@ -40,46 +31,60 @@ const Login = () => {
   const handleGoogleLogin = async (googleData) => {
     try {
       await googleLogin(googleData);
-      handleLoginSuccess();
+      navigate('/');
     } catch (error) {
       console.error('Google login error:', error);
-      handleLoginFailure(error);
+      setError('Google login failed. Please try again.');
     }
   };
 
   return (
-    <Box className="login-container" display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
-      {error && <div className="error-message">{error}</div>}
-      <Box display="flex" flexDirection="column" alignItems="flex-start" mb={2} width="300px">
-        <Typography variant="body1">Username</Typography>
-        <TextField
-          fullWidth
-          variant="outlined"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          margin="normal"
-        />
-        <Typography variant="body1">Password</Typography>
-        <TextField
-          fullWidth
-          type="password"
-          variant="outlined"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          margin="normal"
-        />
-        <Button variant="contained" color="primary" onClick={handleManualLogin} style={{ marginTop: '20px' }}>
-          Login
-        </Button>
+    <Container maxWidth="sm">
+      <Box 
+        display="flex" 
+        flexDirection="column" 
+        alignItems="center" 
+        justifyContent="center" 
+        minHeight="calc(100vh - 64px)"
+      >
+        {error && <Typography color="error" mb={2}>{error}</Typography>}
+        <Box component="form" onSubmit={handleManualLogin} width="100%" maxWidth="400px">
+          <Typography variant="h6" mb={2}>Username</Typography>
+          <TextField
+            fullWidth
+            variant="outlined"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            margin="normal"
+          />
+          <Typography variant="h6" mt={2} mb={2}>Password</Typography>
+          <TextField
+            fullWidth
+            type="password"
+            variant="outlined"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            margin="normal"
+          />
+          <Button 
+            type="submit"
+            variant="contained" 
+            color="primary" 
+            fullWidth
+            sx={{ mt: 3, mb: 2 }}
+          >
+            LOGIN
+          </Button>
+        </Box>
+        <Box mt={4}>
+          <GoogleLogin
+            onSuccess={handleGoogleLogin}
+            onError={() => setError('Google login failed. Please try again.')}
+            useOneTap
+          />
+        </Box>
       </Box>
-      <Box mt={4}>
-        <GoogleLogin
-          onSuccess={handleGoogleLogin}
-          onError={handleLoginFailure}
-          buttonText="Login with Google"
-        />
-      </Box>
-    </Box>
+    </Container>
   );
 };
 

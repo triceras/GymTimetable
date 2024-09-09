@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
@@ -15,29 +15,42 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import ClassMenu from './components/ClassMenu';
 import Profile from './components/Profile';
+import Bookings from './components/Bookings';
 import Box from '@mui/material/Box';
+import ManageUsers from './components/ManageUsers';
+import ManageClasses from './components/ManageClasses';
+import AdminMenu from './components/AdminMenu';
+import { API_BASE_URL } from './config';
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2196f3',
+    },
+  },
+});
 
 function App() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, isAdmin, logout, isLoading } = useAuth();
   const [selectedClass, setSelectedClass] = useState('');
   const [classes, setClasses] = useState([]);
 
-  useEffect(() => {
-    const fetchClasses = async () => {
-      if (isAuthenticated) {
-        try {
-          const response = await axios.get('http://localhost:5000/api/classes');
-          setClasses(response.data);
-        } catch (error) {
-          console.error('Error fetching classes:', error);
-        }
+
+  const fetchClasses = useCallback(async () => {
+    if (isAuthenticated) {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/classes`);
+        console.log('Fetched classes:', response.data);
+        setClasses(response.data);
+      } catch (error) {
+        console.error('Error fetching classes:', error);
       }
-    };
-  
-    fetchClasses();
+    }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    fetchClasses();
+  }, [fetchClasses, isLoading]);
 
   const handleLogout = () => {
     console.log('Logging out');
@@ -45,34 +58,50 @@ function App() {
   };
 
   const handleSelectClass = (className) => {
-    setSelectedClass(className);
+    setSelectedClass(className === 'All Classes' ? '' : className);
   };
+
+  const handleClassesUpdated = () => {
+    fetchClasses();
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ mr: 4 }}>
-              Gym Class Scheduler
-            </Typography>
-            {isAuthenticated && (
-              <>
-                <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-                  <ClassMenu onSelectClass={handleSelectClass} classes={classes} />
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ mr: 2 }}>
+            Gym Class Scheduler
+          </Typography>
+          {isAuthenticated && (
+            <>
+              <ClassMenu 
+                onSelectClass={handleSelectClass} 
+                classes={classes}
+                selectedClass={selectedClass}
+              />
+              <Box sx={{ flexGrow: 1 }} />
+              {isAdmin && (
+                <Box sx={{ mr: 4 }}>
+                  <AdminMenu sx={{ fontSize: '2rem', fontWeight: 'bold' }} />
                 </Box>
-                <ProfileMenu onLogout={handleLogout} />
-              </>
-            )}
-          </Toolbar>
-        </AppBar>
+              )}
+              <ProfileMenu onLogout={handleLogout} />
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
         <Container maxWidth="md" sx={{ marginTop: '2rem' }}>
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
-                isAuthenticated ? 
+                isAuthenticated ?
                 <HomePage classes={classes} selectedClass={selectedClass} /> : 
                 <Navigate to="/login" />
               } 
@@ -80,15 +109,25 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route
               path="/profile"
-              element={isAuthenticated ? <Profile /> : <Navigate to="/login" />} 
+              element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
             />
             <Route 
               path="/calendar" 
               element={
                 isAuthenticated ? 
-                <Calendar classes={classes} selectedClass={selectedClass} /> : 
+                <Calendar classes={classes} selectedClass={selectedClass} /> :
                 <Navigate to="/login" />
               } 
+            />
+            <Route
+              path="/bookings"
+              element={isAuthenticated ? <Bookings /> : <Navigate to="/login" />}
+            />
+            <Route path="/admin/users" 
+              element={isAdmin ? <ManageUsers /> : <Navigate to="/" />} 
+            />
+            <Route path="/admin/classes" 
+              element={isAdmin ? <ManageClasses onClassesUpdated={handleClassesUpdated} /> : <Navigate to="/" />} 
             />
           </Routes>
         </Container>

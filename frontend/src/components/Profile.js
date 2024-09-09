@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper } from '@mui/material';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import { API_BASE_URL } from '../config';
 
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
@@ -10,12 +11,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/member', {
-          headers: { Authorization: `Bearer ${user.token}` }
+        const token = localStorage.getItem('authToken');
+        const response = await axios.get(`${API_BASE_URL}/api/member`, {
+          headers: { Authorization: `Bearer ${token}` }
         });
         setProfileData(response.data);
       } catch (error) {
-        console.error('Error fetching profile data:', error);
+        console.error('Error fetching profile data:', error.response ? error.response.data : error.message);
       }
     };
 

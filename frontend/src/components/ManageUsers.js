@@ -5,6 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { API_BASE_URL } from '../config';
+import moment from 'moment';
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -39,9 +40,9 @@ const ManageUsers = () => {
     if (user) {
       setCurrentUser({
         ...user,
-        password: '',  // Don't populate password for editing
-        date_of_birth: user.date_of_birth ? new Date(user.date_of_birth) : null,
-        member_since: user.member_since ? new Date(user.member_since) : null
+        password: '',
+        date_of_birth: user.date_of_birth ? moment(user.date_of_birth, 'DD/MM/YYYY').format('DD/MM/YYYY') : null,
+        member_since: user.member_since ? moment(user.member_since, 'DD/MM/YYYY').format('DD/MM/YYYY') : null
       });
       setIsEditing(true);
     } else {
@@ -51,7 +52,7 @@ const ManageUsers = () => {
         name: '',
         membership_number: '',
         date_of_birth: null,
-        member_since: new Date(),
+        member_since: moment().format('DD/MM/YYYY'),
         is_admin: false
       });
       setIsEditing(false);
@@ -69,41 +70,48 @@ const ManageUsers = () => {
   };
 
   const handleDateChange = (name, date) => {
-    setCurrentUser({ ...currentUser, [name]: date });
+    setCurrentUser({
+      ...currentUser,
+      [name]: date ? moment(date).format('DD/MM/YYYY') : null
+    });
   };
 
   const handleSubmit = async () => {
     try {
-      const userData = {
+      const formattedData = {
         ...currentUser,
-        date_of_birth: currentUser.date_of_birth ? currentUser.date_of_birth.toISOString().split('T')[0] : null,
-        member_since: currentUser.member_since ? currentUser.member_since.toISOString().split('T')[0] : null
+        date_of_birth: currentUser.date_of_birth ? moment(currentUser.date_of_birth, 'DD/MM/YYYY').format('DD/MM/YYYY') : null,
+        member_since: currentUser.member_since ? moment(currentUser.member_since, 'DD/MM/YYYY').format('DD/MM/YYYY') : null
       };
-
+      console.log('Sending data:', formattedData);
       if (isEditing) {
-        await axios.put('/api/admin/users', userData, {
+        await axios.put(`${API_BASE_URL}/api/admin/users`, formattedData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
         });
       } else {
-        await axios.post('/api/admin/users', userData, {
+        await axios.post(`${API_BASE_URL}/api/admin/users`, formattedData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
         });
       }
       fetchUsers();
       handleCloseDialog();
     } catch (error) {
-      console.error('Error saving user:', error);
+      console.error('Error saving user:', error.response ? error.response.data : error.message);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/admin/users?id=${id}`, {
+      const response = await axios.delete(`${API_BASE_URL}/api/admin/users?id=${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
       });
-      fetchUsers();
+      if (response.status === 200) {
+        fetchUsers();
+      } else {
+        console.error('Unexpected response:', response);
+      }
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error('Error deleting user:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -131,8 +139,8 @@ const ManageUsers = () => {
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.membership_number}</TableCell>
-                  <TableCell>{user.date_of_birth}</TableCell>
-                  <TableCell>{user.member_since}</TableCell>
+                  <TableCell>{user.date_of_birth ? moment(user.date_of_birth, 'DD/MM/YYYY').format('DD/MM/YYYY') : 'N/A'}</TableCell>
+                  <TableCell>{user.member_since ? moment(user.member_since, 'DD/MM/YYYY').format('DD/MM/YYYY') : 'N/A'}</TableCell>
                   <TableCell>{user.is_admin ? 'Yes' : 'No'}</TableCell>
                   <TableCell>
                     <Button onClick={() => handleOpenDialog(user)}>Edit</Button>
@@ -185,15 +193,18 @@ const ManageUsers = () => {
             />
             <DatePicker
               label="Date of Birth"
-              value={currentUser.date_of_birth}
+              value={currentUser.date_of_birth ? moment(currentUser.date_of_birth, 'DD/MM/YYYY').toDate() : null}
               onChange={(date) => handleDateChange('date_of_birth', date)}
               renderInput={(params) => <TextField {...params} fullWidth margin="dense" />}
+              inputFormat="dd/MM/yyyy"
             />
+
             <DatePicker
               label="Member Since"
-              value={currentUser.member_since}
+              value={currentUser.member_since ? moment(currentUser.member_since, 'DD/MM/YYYY').toDate() : null}
               onChange={(date) => handleDateChange('member_since', date)}
               renderInput={(params) => <TextField {...params} fullWidth margin="dense" />}
+              inputFormat="dd/MM/yyyy"
             />
             <FormControlLabel
               control={

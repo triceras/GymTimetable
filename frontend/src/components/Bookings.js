@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { Typography, List, ListItem, ListItemText, Paper, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, Alert } from '@mui/material';
+import { API_BASE_URL } from '../config';
+
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -14,12 +16,13 @@ const Bookings = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/bookings', {
-          headers: { Authorization: `Bearer ${user.token}` }
+        const token = localStorage.getItem('authToken');
+        const response = await axios.get(`${API_BASE_URL}/api/bookings`, {
+          headers: { Authorization: `Bearer ${token}` }
         });
         setBookings(response.data);
       } catch (error) {
-        console.error('Error fetching bookings:', error);
+        console.error('Error fetching bookings:', error.response ? error.response.data : error.message);
       }
     };
 
