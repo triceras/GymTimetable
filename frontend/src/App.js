@@ -34,6 +34,7 @@ function App() {
   const { isAuthenticated, isAdmin, logout, isLoading } = useAuth();
   const [selectedClass, setSelectedClass] = useState('');
   const [classes, setClasses] = useState([]);
+  const [classesError, setClassesError] = useState(null);
 
 
   const fetchClasses = useCallback(async () => {
@@ -42,8 +43,10 @@ function App() {
         const response = await axios.get(`${API_BASE_URL}/api/classes`);
         console.log('Fetched classes:', response.data);
         setClasses(response.data);
+        setClassesError(null);
       } catch (error) {
         console.error('Error fetching classes:', error);
+        setClassesError('Failed to fetch classes. Please try again later.');
       }
     }
   }, [isAuthenticated]);
@@ -65,6 +68,8 @@ function App() {
     fetchClasses();
   };
 
+  const menuButtonStyle = { fontSize: '1rem', fontWeight: 'bold', color: 'inherit' };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -84,11 +89,12 @@ function App() {
                 onSelectClass={handleSelectClass} 
                 classes={classes}
                 selectedClass={selectedClass}
+                sx={menuButtonStyle}
               />
               <Box sx={{ flexGrow: 1 }} />
               {isAdmin && (
-                <Box sx={{ mr: 4 }}>
-                  <AdminMenu sx={{ fontSize: '2rem', fontWeight: 'bold' }} />
+                <Box sx={{ mr: 3 }}>
+                  <AdminMenu sx={menuButtonStyle} />
                 </Box>
               )}
               <ProfileMenu onLogout={handleLogout} />
@@ -102,7 +108,7 @@ function App() {
               path="/"
               element={
                 isAuthenticated ?
-                <HomePage classes={classes} selectedClass={selectedClass} /> : 
+                <HomePage classes={classes} selectedClass={selectedClass} classesError={classesError} /> : 
                 <Navigate to="/login" />
               } 
             />
@@ -136,11 +142,15 @@ function App() {
   );
 }
 
-function HomePage({ classes, selectedClass }) {
+function HomePage({ classes, selectedClass, classesError }) {
   return (
     <div>
       <main>
-        <Calendar classes={classes} selectedClass={selectedClass} />
+        {classesError ? (
+          <Typography color="error">{classesError}</Typography>
+        ) : (
+          <Calendar classes={classes} selectedClass={selectedClass} />
+        )}
       </main>
     </div>
   );
@@ -149,6 +159,7 @@ function HomePage({ classes, selectedClass }) {
 HomePage.propTypes = {
   classes: PropTypes.array.isRequired,
   selectedClass: PropTypes.string,
+  classesError: PropTypes.string,
 };
 
 export default App;

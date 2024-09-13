@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const AdminMenu = () => {
+const AdminMenu = ({ sx }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
 
@@ -26,7 +26,16 @@ const AdminMenu = () => {
 
   return (
     <>
-      <Button color="inherit" onClick={handleClick} sx={{ fontWeight: 'bold' }} >
+      <Button 
+        color="inherit" 
+        onClick={handleClick} 
+        sx={{ 
+          ...sx,
+          fontSize: '1rem',
+          fontWeight: 'bold',
+          textTransform: 'uppercase'
+        }}
+      >
         Admin
       </Button>
       <Menu

@@ -58,19 +58,16 @@ class GymClass(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     instructor = db.Column(db.String(100), nullable=True)
-    occurrences = db.relationship("Occurrence", backref="gym_class", cascade="all, delete-orphan", lazy="joined")
-
-    def __init__(self, name, instructor=None):
-        self.name = name
-        self.instructor = instructor
+    occurrences = db.relationship('Occurrence', back_populates='gym_class', cascade="all, delete-orphan")
 
 class Occurrence(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    gym_class_id = db.Column(db.Integer, db.ForeignKey("gym_class.id"), nullable=False)
-    day = db.Column(db.String(20), nullable=False)
-    time = db.Column(db.String(20), nullable=False)
+    gym_class_id = db.Column(db.Integer, db.ForeignKey('gym_class.id'), nullable=False)
+    day = db.Column(db.String(10), nullable=False)
+    time = db.Column(db.String(5), nullable=False)
     max_capacity = db.Column(db.Integer, nullable=False)
     current_capacity = db.Column(db.Integer, nullable=False)
+    gym_class = db.relationship('GymClass', back_populates='occurrences')
 
     def __init__(self, gym_class_id, day, time, max_capacity, current_capacity):
         self.gym_class_id = gym_class_id
@@ -160,19 +157,25 @@ member_schema = MemberSchema()
 def initialize_database():
     print("Starting database initialization...")
     try:
-        print("Dropping all tables...")
-        db.drop_all()
-        print("Creating all tables...")
-        db.create_all()
-
+        # Check if tables exist
         inspector = db.inspect(db.engine)
-        tables = inspector.get_table_names()
-        logger.info(f"Created tables: {tables}")
+        existing_tables = inspector.get_table_names()
+
+        if not existing_tables:
+            print("Creating all tables...")
+            db.create_all()
+        else:
+            print("Tables already exist, skipping creation.")
 
         logger.info("Initializing timetable...")
         initialize_timetable()
-        logger.info("Initializing user table...")
-        initialize_user_table()
+
+        logger.info("Checking user table...")
+        if not User.query.first():
+            logger.info("User table is empty. Initializing with admin user...")
+            initialize_user_table()
+        else:
+            logger.info("User table already contains data. Skipping initialization.")
 
         test_user = User.query.filter_by(username="admin").first()
         if test_user:
@@ -185,36 +188,39 @@ def initialize_database():
         logger.error(f"Error during database initialization: {e}")
         raise
 
+
 def initialize_timetable():
     try:
-        logger.info("Loading timetable data from JSON file...")
         with open("timetable.json", "r") as f:
             timetable = json.load(f)
-
-        logger.info(f"Loaded {len(timetable)} classes from JSON")
         for class_info in timetable:
-            occurrences_data = class_info.pop("occurrences")
-            new_class = GymClass(name=class_info['name'], instructor=class_info.get('instructor', ''))
-            db.session.add(new_class)
-            db.session.flush()
+            existing_class = GymClass.query.filter_by(name=class_info['name'], instructor=class_info['instructor']).first()
+            if not existing_class:
+                new_class = GymClass(name=class_info['name'], instructor=class_info['instructor'])
+                db.session.add(new_class)
+                db.session.flush()
+            else:
+                new_class = existing_class
 
-            occurrences = []
-            for occurrence_info in occurrences_data:
-                new_occurrence = Occurrence(
+            for occurrence in class_info.get('occurrences', []):
+                existing_occurrence = Occurrence.query.filter_by(
                     gym_class_id=new_class.id,
-                    day=occurrence_info['day'],
-                    time=occurrence_info['time'],
-                    max_capacity=occurrence_info['max_capacity'],
-                    current_capacity=occurrence_info['current_capacity']
-                )
-                occurrences.append(new_occurrence)
-
-            new_class.occurrences = occurrences
-
+                    day=occurrence['day'],
+                    time=occurrence['time']
+                ).first()
+                if not existing_occurrence:
+                    new_occurrence = Occurrence(
+                        gym_class_id=new_class.id,
+                        day=occurrence['day'],
+                        time=occurrence['time'],
+                        max_capacity=occurrence['max_capacity'],
+                        current_capacity=occurrence['current_capacity']
+                    )
+                    db.session.add(new_occurrence)
         db.session.commit()
-        logger.info(f"Added {len(timetable)} classes to the database")
+        print("Timetable initialized successfully")
     except Exception as e:
-        logger.error(f"Error initializing timetable: {e}")
+        print(f"Error initializing timetable: {e}")
         db.session.rollback()
 
 def initialize_user_table():
@@ -301,7 +307,7 @@ def register_routes(app):
     def get_classes():
         classes = GymClass.query.options(joinedload(GymClass.occurrences)).all()
         result = gym_classes_schema.dump(classes)
-        logger.info(f"Classes fetched: {result}")
+        print("Classes being sent to frontend:", result)
         return jsonify(result)
 
     @app.route("/api/classes/<int:class_id>", methods=["GET"])
@@ -420,30 +426,38 @@ def register_routes(app):
             logger.error(f"Error fetching bookings: {str(e)}")
             return jsonify({"error": str(e)}), 422
     
-    @app.route("/api/bookings/cancel", methods=["POST"])
+    @app.route("/api/classes/cancel", methods=["POST"])
     @jwt_required()
-    def cancel_booking():
+    def cancel_class():
         try:
             data = request.json
-            booking_id = data.get('booking_id')
+            occurrence_id = data.get('occurrence_id')
             current_user_id = get_jwt_identity()
-
-            booking = Booking.query.filter_by(id=booking_id, user_id=current_user_id).first()
+            
+            booking = Booking.query.filter_by(occurrence_id=occurrence_id, user_id=current_user_id).first()
             if not booking:
                 return jsonify({"success": False, "message": "Booking not found"}), 404
-
+            
             # Decrease the current capacity of the occurrence
             occurrence = booking.occurrence
             occurrence.current_capacity -= 1
-
+            
             db.session.delete(booking)
             db.session.commit()
-
-            return jsonify({"success": True, "message": "Booking cancelled successfully"}), 200
+            
+            return jsonify({
+                "success": True, 
+                "message": "Booking cancelled successfully",
+                "updated_occurrence": {
+                    "id": occurrence.id,
+                    "current_capacity": occurrence.current_capacity,
+                    "max_capacity": occurrence.max_capacity
+                }
+            }), 200
         except Exception as e:
             db.session.rollback()
-            logger.error(f"Error cancelling booking: {str(e)}")
-            return jsonify({"success": False, "message": f"Failed to cancel booking: {str(e)}"}), 500
+            logger.error(f"Error cancelling class: {str(e)}")
+            return jsonify({"success": False, "message": f"Failed to cancel class: {str(e)}"}), 500
 
     @app.route("/api/admin/users", methods=["GET", "POST", "PUT", "DELETE"])
     @jwt_required()
@@ -471,29 +485,28 @@ def register_routes(app):
             try:
                 date_of_birth = datetime.strptime(data['date_of_birth'], '%d/%m/%Y').date()
                 member_since = datetime.strptime(data['member_since'], '%d/%m/%Y').date()
-            except ValueError as e:
-                logger.error(f"Date parsing error: {str(e)}")
-                return jsonify({"error": f"Invalid date format: {str(e)}. Use DD/MM/YYYY."}), 400
-            except KeyError as e:
-                logger.error(f"Missing required field: {str(e)}")
-                return jsonify({"error": f"Missing required field: {str(e)}"}), 400
 
-            new_user = User(username=data['username'], is_admin=data.get('is_admin', False))
-            new_user.set_password(data['password'])
-            db.session.add(new_user)
-            db.session.flush()
+                new_user = User(username=data['username'], is_admin=data.get('is_admin', False))
+                new_user.set_password(data['password'])
+                db.session.add(new_user)
+                db.session.flush()
 
-            new_member = Member(
-                name=data['name'],
-                username=data['username'],
-                membership_number=data['membership_number'],
-                date_of_birth=date_of_birth,
-                member_since=member_since,
-                user_id=new_user.id
-            )
-            db.session.add(new_member)
-            db.session.commit()
-            return jsonify({"message": "User created successfully", "id": new_user.id}), 201
+                new_member = Member(
+                    name=data['name'],
+                    username=data['username'],
+                    membership_number=data['membership_number'],
+                    date_of_birth=date_of_birth,
+                    member_since=member_since,
+                    user_id=new_user.id
+                )
+                db.session.add(new_member)
+                db.session.commit()
+                return jsonify({"message": "User created successfully", "id": new_user.id}), 201
+            except Exception as e:
+                db.session.rollback()
+                logger.error(f"Error creating user: {str(e)}")
+                return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 
         elif request.method == "PUT":
             data = request.json
@@ -600,45 +613,52 @@ def register_routes(app):
                 db.session.rollback()
                 return jsonify({"error": "An error occurred while creating the class"}), 500
 
-        elif request.method == "PUT":
-            data = request.json
-            class_to_update = GymClass.query.get(data['id'])
-            if not class_to_update:
-                return jsonify({"error": "Class not found"}), 404
 
-            class_to_update.name = data['name']
-            class_to_update.instructor = data['instructor']
+    @app.route("/api/admin/classes/<int:class_id>", methods=["PUT"])
+    @jwt_required()
+    def update_class(class_id):
+        current_user_id = get_jwt_identity()
+        user = User.query.get(current_user_id)
+        if not user or not user.is_admin:
+            return jsonify({"error": "Unauthorized"}), 403
 
+        data = request.json
+        class_to_update = GymClass.query.get(class_id)
+        if not class_to_update:
+            return jsonify({"error": "Class not found"}), 404
 
-            # Update existing occurrences and add new ones
-            existing_occurrence_ids = set(occ.id for occ in class_to_update.occurrences)
-            for occ_data in data['occurrences']:
-                if 'id' in occ_data and occ_data['id'] in existing_occurrence_ids:
-                    # Update existing occurrence
-                    occurrence = next(occ for occ in class_to_update.occurrences if occ.id == occ_data['id'])
-                    occurrence.day = occ_data['day']
-                    occurrence.time = occ_data['time']
-                    occurrence.max_capacity = occ_data['max_capacity']
-                    existing_occurrence_ids.remove(occ_data['id'])
-                else:
-                    # Add new occurrence
-                    new_occurrence = Occurrence(
-                        gym_class_id=class_to_update.id,
-                        day=occ_data['day'],
-                        time=occ_data['time'],
-                        max_capacity=occ_data['max_capacity'],
-                        current_capacity=0
-                    )
-                    db.session.add(new_occurrence)
+        class_to_update.name = data['name']
+        class_to_update.instructor = data['instructor']
 
-            # Remove occurrences that are no longer in the updated data
-            for occ_id in existing_occurrence_ids:
-                occurrence_to_remove = next(occ for occ in class_to_update.occurrences if occ.id == occ_id)
-                db.session.delete(occurrence_to_remove)
+        # Update existing occurrences and add new ones
+        existing_occurrence_ids = set(occ.id for occ in class_to_update.occurrences)
+        for occ_data in data['occurrences']:
+            if 'id' in occ_data and occ_data['id'] in existing_occurrence_ids:
+                # Update existing occurrence
+                occurrence = next(occ for occ in class_to_update.occurrences if occ.id == occ_data['id'])
+                occurrence.day = occ_data['day']
+                occurrence.time = occ_data['time']
+                occurrence.max_capacity = occ_data['max_capacity']
+                existing_occurrence_ids.remove(occ_data['id'])
+            else:
+                # Add new occurrence
+                new_occurrence = Occurrence(
+                    gym_class_id=class_to_update.id,
+                    day=occ_data['day'],
+                    time=occ_data['time'],
+                    max_capacity=occ_data['max_capacity'],
+                    current_capacity=0
+                )
+                db.session.add(new_occurrence)
 
-            db.session.commit()
-            update_timetable_json()
-            return jsonify({"message": "Class updated successfully"}), 200
+        # Remove occurrences that are no longer in the updated data
+        for occ_id in existing_occurrence_ids:
+            occurrence_to_remove = next(occ for occ in class_to_update.occurrences if occ.id == occ_id)
+            db.session.delete(occurrence_to_remove)
+
+        db.session.commit()
+        update_timetable_json()
+        return jsonify({"message": "Class updated successfully"}), 200
 
     @app.route("/api/admin/classes/<int:id>", methods=["DELETE"])
     @jwt_required()
