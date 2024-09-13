@@ -1,3 +1,4 @@
+// src/components/AdminMenu.js
 import React from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -26,10 +27,10 @@ const AdminMenu = ({ sx }) => {
 
   return (
     <>
-      <Button 
-        color="inherit" 
-        onClick={handleClick} 
-        sx={{ 
+      <Button
+        color="inherit"
+        onClick={handleClick}
+        sx={{
           ...sx,
           fontSize: '1rem',
           fontWeight: 'bold',

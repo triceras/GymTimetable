@@ -1,6 +1,7 @@
 // Calendar.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowBack, ArrowForward, Today, ViewWeek, ViewDay, CalendarMonth } from '@mui/icons-material';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -14,6 +15,10 @@ import {
   Snackbar,
   Alert,
   Button,
+  IconButton,
+  Tooltip,
+  Box,
+  ButtonGroup,
 } from '@mui/material';
 import axios from 'axios';
 import './CalendarStyles.css';
@@ -27,6 +32,7 @@ const Calendar = ({ classes, selectedClass }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentViewStart, setCurrentViewStart] = useState(moment().startOf('week'));
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const calendarRef = useRef(null);
 
   const handleDatesSet = (dateInfo) => {
     setCurrentViewStart(moment(dateInfo.start));
@@ -211,20 +217,91 @@ const Calendar = ({ classes, selectedClass }) => {
     }
   };
 
+  const CalendarToolbar = ({ calendarApi }) => {
+    const handlePrev = () => {
+      calendarApi.prev();
+    };
+  
+    const handleNext = () => {
+      calendarApi.next();
+    };
+  
+    const handleToday = () => {
+      calendarApi.today();
+    };
+  
+    const handleChangeView = (view) => {
+      calendarApi.changeView(view);
+    };
+  
+    return (
+      <Box
+        className="custom-calendar-toolbar"
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        alignItems={{ xs: 'flex-start', sm: 'center' }}
+        justifyContent="space-between"
+        mb={2}
+        sx={{ backgroundColor: '#f0f0f0', padding: '8px', borderRadius: '4px' }}
+      >
+        <Box>
+          <ButtonGroup variant="text">
+            <Tooltip title="Previous">
+            <IconButton size="large" onClick={handlePrev}>
+              <ArrowBack />
+            </IconButton>
+            </Tooltip>
+            <Tooltip title="Today">
+              <IconButton onClick={handleToday}>
+                <Today />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Next">
+              <IconButton onClick={handleNext}>
+                <ArrowForward />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </Box>
+        <Typography variant="h6">
+          {calendarApi ? calendarApi.getCurrentData().viewTitle : 'Loading...'}
+        </Typography>
+        <Box>
+          <ButtonGroup variant="text">
+            <Tooltip title="Month View">
+              <IconButton onClick={() => handleChangeView('dayGridMonth')}>
+                <CalendarMonth />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Week View">
+              <IconButton onClick={() => handleChangeView('timeGridWeek')}>
+                <ViewWeek />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Day View">
+              <IconButton onClick={() => handleChangeView('timeGridDay')}>
+                <ViewDay />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </Box>
+      </Box>
+    );
+  };
+  
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
+      <CalendarToolbar calendarApi={calendarRef.current ? calendarRef.current.getApi() : null} />
       <FullCalendar
+        ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
+        headerToolbar={false}
         datesSet={handleDatesSet}
         events={events}
         eventClick={handleEventClick}

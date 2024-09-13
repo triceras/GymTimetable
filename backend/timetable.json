@@ -95,13 +95,13 @@
         "day": "Thursday",
         "time": "09:00",
         "max_capacity": 20,
-        "current_capacity": 12
+        "current_capacity": 13
       },
       {
         "day": "Thursday",
         "time": "18:00",
         "max_capacity": 20,
-        "current_capacity": 8
+        "current_capacity": 9
       },
       {
         "day": "Tuesday",
@@ -121,7 +121,14 @@
     "id": 6,
     "name": "Boot Camp",
     "instructor": "Sonic",
-    "occurrences": []
+    "occurrences": [
+      {
+        "day": "Saturday",
+        "time": "09:00",
+        "max_capacity": 20,
+        "current_capacity": 0
+      }
+    ]
   },
   {
     "id": 7,

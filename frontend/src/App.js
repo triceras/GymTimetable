@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useEffect, useState, useCallback } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -36,7 +38,6 @@ function App() {
   const [classes, setClasses] = useState([]);
   const [classesError, setClassesError] = useState(null);
 
-
   const fetchClasses = useCallback(async () => {
     if (isAuthenticated) {
       try {
@@ -68,7 +69,7 @@ function App() {
     fetchClasses();
   };
 
-  const menuButtonStyle = { fontSize: '1rem', fontWeight: 'bold', color: 'inherit' };
+  const menuButtonStyle = { fontSize: '1rem', fontWeight: 'bold', color: '#fff', textTransform: 'none' };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -78,62 +79,61 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ mr: 2 }}>
-            Gym Class Scheduler
-          </Typography>
-          {isAuthenticated && (
-            <>
-              <ClassMenu 
-                onSelectClass={handleSelectClass} 
-                classes={classes}
-                selectedClass={selectedClass}
-                sx={menuButtonStyle}
-              />
-              <Box sx={{ flexGrow: 1 }} />
-              {isAdmin && (
-                <Box sx={{ mr: 3 }}>
+        <AppBar position="static" sx={{ backgroundColor: '#1976d2' }}>
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Gym Class Scheduler
+            </Typography>
+            {isAuthenticated && (
+              <>
+                <ClassMenu
+                  onSelectClass={handleSelectClass}
+                  classes={classes}
+                  selectedClass={selectedClass}
+                  sx={menuButtonStyle}
+                />
+                {isAdmin && (
                   <AdminMenu sx={menuButtonStyle} />
-                </Box>
-              )}
-              <ProfileMenu onLogout={handleLogout} />
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+                )}
+                <ProfileMenu onLogout={handleLogout} />
+              </>
+            )}
+          </Toolbar>
+        </AppBar>
         <Container maxWidth="md" sx={{ marginTop: '2rem' }}>
           <Routes>
             <Route
               path="/"
               element={
                 isAuthenticated ?
-                <HomePage classes={classes} selectedClass={selectedClass} classesError={classesError} /> : 
-                <Navigate to="/login" />
-              } 
+                  <HomePage classes={classes} selectedClass={selectedClass} classesError={classesError} /> :
+                  <Navigate to="/login" />
+              }
             />
             <Route path="/login" element={<Login />} />
             <Route
               path="/profile"
               element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
             />
-            <Route 
-              path="/calendar" 
+            <Route
+              path="/calendar"
               element={
-                isAuthenticated ? 
-                <Calendar classes={classes} selectedClass={selectedClass} /> :
-                <Navigate to="/login" />
-              } 
+                isAuthenticated ?
+                  <Calendar classes={classes} selectedClass={selectedClass} /> :
+                  <Navigate to="/login" />
+              }
             />
             <Route
               path="/bookings"
               element={isAuthenticated ? <Bookings /> : <Navigate to="/login" />}
             />
-            <Route path="/admin/users" 
-              element={isAdmin ? <ManageUsers /> : <Navigate to="/" />} 
+            <Route
+              path="/admin/users"
+              element={isAdmin ? <ManageUsers /> : <Navigate to="/" />}
             />
-            <Route path="/admin/classes" 
-              element={isAdmin ? <ManageClasses onClassesUpdated={handleClassesUpdated} /> : <Navigate to="/" />} 
+            <Route
+              path="/admin/classes"
+              element={isAdmin ? <ManageClasses onClassesUpdated={handleClassesUpdated} /> : <Navigate to="/" />}
             />
           </Routes>
         </Container>

@@ -1,8 +1,9 @@
+// src/components/ClassMenu.js
 import React, { useState } from 'react';
 import { Typography, Menu, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const ClassMenu = ({ classes, onSelectClass }) => {
+const ClassMenu = ({ classes, onSelectClass, sx }) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -26,6 +27,7 @@ const ClassMenu = ({ classes, onSelectClass }) => {
         variant="h6"
         component="div"
         sx={{
+          ...sx,
           fontFamily: 'Arial, sans-serif',
           fontWeight: 600,
           cursor: 'pointer',

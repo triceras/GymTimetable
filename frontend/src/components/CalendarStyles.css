@@ -138,3 +138,29 @@
     padding: 3px;
   }
 }
+
+
+/* Custom Toolbar Styles */
+.fc .fc-toolbar {
+  display: none; /* Hide default toolbar */
+}
+
+.custom-calendar-toolbar {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.custom-calendar-toolbar .MuiIconButton-root {
+  color: #555;
+}
+
+.custom-calendar-toolbar .MuiIconButton-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.custom-calendar-toolbar .MuiTypography-root {
+  font-weight: 500;
+}
+
