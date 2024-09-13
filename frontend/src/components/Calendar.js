@@ -1,130 +1,384 @@
-// src/components/Calendar.js
+// Calendar.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowBack, ArrowForward, Today, ViewWeek, ViewDay, CalendarMonth } from '@mui/icons-material';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import moment from 'moment';
-import ClassDetails from './ClassDetails';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  Typography,
+  Snackbar,
+  Alert,
+  Button,
+  IconButton,
+  Tooltip,
+  Box,
+  ButtonGroup,
+} from '@mui/material';
+import axios from 'axios';
 import './CalendarStyles.css';
-import { useAuth } from '../contexts/AuthContext';
 
-const Calendar = ({ classes }) => {
-  const [open, setOpen] = useState(false);
-  const [classData, setClassData] = useState({});
-  const { isAuthenticated } = useAuth();
+const Calendar = ({ classes, selectedClass }) => {
+  const [events, setEvents] = useState([]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [error, setError] = useState(null);
+  const [confirmationMessage, setConfirmationMessage] = useState('');
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentViewStart, setCurrentViewStart] = useState(moment().startOf('week'));
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const calendarRef = useRef(null);
 
-  const handleEventClick = (info) => {
-    const occurrence = info.event.extendedProps.occurrence;
-    const classItem = info.event.extendedProps.classItem;
-  
-    setClassData({
-      occurrence,
-      classItem: { ...classItem, name: classItem.name },
-    });
-    setOpen(true);
-  };
-  
-
-  const handleClose = () => {
-    setOpen(false);
+  const handleDatesSet = (dateInfo) => {
+    setCurrentViewStart(moment(dateInfo.start));
   };
 
-  const getClassColor = (classId) => {
-    const colors = ['#F79C1E', '#1E90F7', '#F71E45', '#45F71E', '#1EF7DC'];
-    return colors[classId % colors.length];
+  const classColors = {};
+
+  useEffect(() => {
+    if (classes === undefined) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+      if (Array.isArray(classes) && classes.length > 0) {
+        const newEvents = generateEvents(classes, selectedClass, currentViewStart);
+        setEvents(newEvents);
+      } else {
+        console.warn('Classes is empty or not an array:', classes);
+        setEvents([]);
+      }
+    }
+  }, [classes, selectedClass, currentViewStart]);
+
+  const getClassColor = (className) => {
+    if (!classColors[className]) {
+      // Generate a random color
+      const randomColor = getRandomColor();
+      classColors[className] = randomColor;
+    }
+    return classColors[className];
   };
 
-  const getEventDates = (classItem, occurrence) => {
+  const getRandomColor = () => {
+    // Generate a random hex color code
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  const getEventDates = (classItem, occurrence, viewStart) => {
     const dayIndex = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].indexOf(occurrence.day.toLowerCase());
-    const startTime = moment.duration(occurrence.time);
-    const start = moment().startOf('week').add(dayIndex, 'days').add(startTime);
-    const end = start.clone().add(1, 'hours').toDate();
-  
+    const [hours, minutes] = occurrence.time.split(':').map(Number);
+    const start = moment(viewStart).startOf('week').add(dayIndex, 'days').set({
+      hour: hours,
+      minute: minutes,
+      second: 0,
+      millisecond: 0,
+    });
+    const end = moment(start).add(1, 'hour');
+
     return {
       start: start.toDate(),
-      end,
+      end: end.toDate(),
       id: classItem.id,
-      title: classItem.name,
+      title: `${occurrence.time}\n${classItem.instructor}\n${classItem.name}`,
       occurrenceId: occurrence.id,
       occurrence: { ...occurrence, class_name: classItem.name },
-      color: getClassColor(classItem.id),
+      color: getClassColor(classItem.name),
       extendedProps: {
         occurrence,
         classItem: { ...classItem, name: classItem.name },
       },
     };
-  };   
+  };
 
-  const events = classes.flatMap((classItem) => {
-    return classItem.occurrences.map((occurrence) => {
-      const { start, end } = getEventDates(classItem, occurrence, classItem.classData);
-      return {
-        title: classItem.name,
-        start,
-        end,
-        id: occurrence.id,
-        allDay: false,
-        extendedProps: {
-          occurrence,
-          classItem,
-          classData: classItem.classData,
-        },
-        color: getClassColor(classItem.id),
-      };
+  const generateEvents = (classes, selectedClass, viewStart) => {
+    if (!classes || !Array.isArray(classes)) {
+      console.error('Classes is not an array:', classes);
+      return [];
+    }
+
+    return classes.flatMap((classItem) => {
+      if (!classItem || typeof classItem !== 'object') {
+        console.error('Invalid class item:', classItem);
+        return [];
+      }
+
+      if (selectedClass && classItem.name !== selectedClass) {
+        return [];
+      }
+
+      if (!classItem.occurrences || !Array.isArray(classItem.occurrences)) {
+        console.warn(
+          `Class "${classItem.name}" has no occurrences or occurrences is not an array:`,
+          classItem
+        );
+        return [];
+      }
+
+      return classItem.occurrences.map((occurrence) => {
+        const { start, end } = getEventDates(classItem, occurrence, viewStart);
+
+        return {
+          title: classItem.name,
+          start,
+          end,
+          id: occurrence.id,
+          allDay: false,
+          extendedProps: {
+            occurrence,
+            classItem,
+            time: occurrence.time,
+            instructor: classItem.instructor || 'No instructor',
+            instructorPhoto: classItem.instructorPhoto || '', // Assuming instructorPhoto is available
+          },
+          color: getClassColor(classItem.name),
+        };
+      });
     });
-  });
-
-  const handleEventMouseEnter = (info) => {
-    const eventEl = info.el;
-    eventEl.style.zIndex = 1;
-    eventEl.style.transform = 'scale(1.1)';
   };
 
-  const handleEventMouseLeave = (info) => {
-    const eventEl = info.el;
-    eventEl.style.zIndex = '';
-    eventEl.style.transform = '';
+  const handleEventClick = (clickInfo) => {
+    const event = clickInfo.event;
+    const { occurrence, classItem } = event.extendedProps;
+    setSelectedEvent({
+      title: event.title,
+      start: event.start,
+      occurrence: occurrence,
+      classItem: classItem,
+      currentCapacity: occurrence.current_capacity,
+      maxCapacity: occurrence.max_capacity,
+    });
+    setIsDialogOpen(true);
   };
 
-  const handleEventDidMount = (info) => {
-    const eventEl = info.el;
-    eventEl.style.zIndex = '';
-    eventEl.style.transform = '';
+  const handleScheduleClass = async () => {
+    if (selectedEvent) {
+      try {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          setError('You are not authenticated. Please log in again.');
+          return;
+        }
+        const response = await axios.post(
+          'http://localhost:5000/api/classes/schedule',
+          { occurrence_id: selectedEvent.occurrence.id },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        if (response.data.success) {
+          setIsDialogOpen(false);
+          setConfirmationMessage(
+            `You have successfully booked ${selectedEvent.classItem.name} at ${moment(
+              selectedEvent.start
+            ).format('h:mm A')}`
+          );
+          setShowConfirmation(true);
+          const updatedEvents = events.map((event) => {
+            if (event.id === selectedEvent.occurrence.id) {
+              return {
+                ...event,
+                extendedProps: {
+                  ...event.extendedProps,
+                  occurrence: {
+                    ...event.extendedProps.occurrence,
+                    current_capacity: response.data.current_capacity,
+                  },
+                },
+              };
+            }
+            return event;
+          });
+          setEvents(updatedEvents);
+          setSelectedEvent((prevState) => ({
+            ...prevState,
+            occurrence: {
+              ...prevState.occurrence,
+              current_capacity: response.data.current_capacity,
+            },
+          }));
+        } else {
+          setError(response.data.message);
+        }
+      } catch (error) {
+        console.error('Error scheduling class:', error);
+        setError(
+          error.response?.data?.message ||
+            'Failed to schedule class. Please try again.'
+        );
+      }
+    }
   };
+
+  const CalendarToolbar = ({ calendarApi }) => {
+    const handlePrev = () => {
+      calendarApi.prev();
+    };
+  
+    const handleNext = () => {
+      calendarApi.next();
+    };
+  
+    const handleToday = () => {
+      calendarApi.today();
+    };
+  
+    const handleChangeView = (view) => {
+      calendarApi.changeView(view);
+    };
+  
+    return (
+      <Box
+        className="custom-calendar-toolbar"
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        alignItems={{ xs: 'flex-start', sm: 'center' }}
+        justifyContent="space-between"
+        mb={2}
+        sx={{ backgroundColor: '#f0f0f0', padding: '8px', borderRadius: '4px' }}
+      >
+        <Box>
+          <ButtonGroup variant="text">
+            <Tooltip title="Previous">
+            <IconButton size="large" onClick={handlePrev}>
+              <ArrowBack />
+            </IconButton>
+            </Tooltip>
+            <Tooltip title="Today">
+              <IconButton onClick={handleToday}>
+                <Today />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Next">
+              <IconButton onClick={handleNext}>
+                <ArrowForward />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </Box>
+        <Typography variant="h6">
+          {calendarApi ? calendarApi.getCurrentData().viewTitle : 'Loading...'}
+        </Typography>
+        <Box>
+          <ButtonGroup variant="text">
+            <Tooltip title="Month View">
+              <IconButton onClick={() => handleChangeView('dayGridMonth')}>
+                <CalendarMonth />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Week View">
+              <IconButton onClick={() => handleChangeView('timeGridWeek')}>
+                <ViewWeek />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Day View">
+              <IconButton onClick={() => handleChangeView('timeGridDay')}>
+                <ViewDay />
+              </IconButton>
+            </Tooltip>
+          </ButtonGroup>
+        </Box>
+      </Box>
+    );
+  };
+  
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
+      <CalendarToolbar calendarApi={calendarRef.current ? calendarRef.current.getApi() : null} />
       <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+        ref={calendarRef}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
-        headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
-        buttonText={{
-          today: 'today',
-          month: 'month',
-          week: 'week',
-          day: 'day',
-        }}
-        slotMinTime="06:00:00"
-        slotMaxTime="22:00:00"
+        headerToolbar={false}
+        datesSet={handleDatesSet}
         events={events}
         eventClick={handleEventClick}
-        eventMouseEnter={handleEventMouseEnter}
-        eventMouseLeave={handleEventMouseLeave}
-        eventDidMount={handleEventDidMount}
+        eventContent={(eventInfo) => {
+          const { time, instructor, classItem, instructorPhoto } = eventInfo.event.extendedProps;
+
+          return (
+            <div className="event-content">
+              <div className="event-time">
+                {moment(eventInfo.event.start).format('h:mm A')}
+              </div>
+              <div className="event-class-name">{classItem.name}</div>
+              <div className="event-instructor">
+                {instructorPhoto && (
+                  <img
+                    src={instructorPhoto}
+                    alt={instructor}
+                    className="instructor-photo"
+                  />
+                )}
+                {instructor}
+              </div>
+            </div>
+          );
+        }}
+        eventClassNames="fc-event"
+        eventDidMount={(info) => {
+          // Set event background color based on class type
+          info.el.style.setProperty('--event-bg-color', info.event.backgroundColor);
+        }}
+        height="auto"
       />
-      <ClassDetails
-        open={open}
-        classData={classData}
-        onClose={handleClose}
-        onClassUpdated={handleClose}
-        isAuthenticated={isAuthenticated}
-      />
+      {showConfirmation && (
+        <Snackbar
+          open={showConfirmation}
+          autoHideDuration={6000}
+          onClose={() => setShowConfirmation(false)}
+        >
+          <Alert
+            onClose={() => setShowConfirmation(false)}
+            severity="success"
+          >
+            {confirmationMessage}
+          </Alert>
+        </Snackbar>
+      )}
+      <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
+        <DialogTitle>Schedule Class</DialogTitle>
+        <DialogContent className="dialog-content">
+          {selectedEvent && (
+            <>
+              <Typography className="dialog-question">
+                Would you like to schedule the {selectedEvent.classItem.name} class
+                with {selectedEvent.classItem.instructor} on {moment(selectedEvent.start).format('dddd, MMMM D')} at {moment(selectedEvent.start).format('h:mm A')}?
+              </Typography>
+              <Typography className="available-spots">
+                Available spots: {selectedEvent.maxCapacity - selectedEvent.currentCapacity} out of {selectedEvent.maxCapacity}
+              </Typography>
+              <div className="dialog-actions">
+                <Button onClick={() => setIsDialogOpen(false)} className="dialog-button">Cancel</Button>
+                <Button onClick={handleScheduleClass} className="dialog-button">Schedule</Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+      {error && (
+        <Snackbar
+          open={!!error}
+          autoHideDuration={6000}
+          onClose={() => setError(null)}
+        >
+          <Alert onClose={() => setError(null)} severity="error">
+            {error}
+          </Alert>
+        </Snackbar>
+      )}
     </>
   );
 };

@@ -1,5 +1,3 @@
-// src/components/ClassDetails.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
@@ -10,7 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import { format } from "date-fns";
+import Typography from '@mui/material/Typography';
 import { useAuth } from '../contexts/AuthContext';
 
 const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
@@ -23,32 +21,35 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       console.error("User is not authenticated");
       return;
     }
-  
-    if (!classData || !classData.occurrence || !classData.classItem) {
-      console.error("Class data, occurrence data, or class item data is not available");
+
+    if (!classData || !classData.classItem) {
+      console.error("Class data is not available");
       return;
     }
-  
-    const { occurrence, classItem } = classData;
-  
-    // Check if there is room in the class
-    if (occurrence.current_capacity < occurrence.max_capacity) {
-      // Call the API to schedule the class
+
+    const occurrenceToSchedule = classData.classItem.occurrences.find(
+      (occurrence) => occurrence.id === classData.occurrence.id
+    );
+
+    if (!occurrenceToSchedule) {
+      console.error("Occurrence not found");
+      return;
+    }
+
+    if (occurrenceToSchedule.current_capacity < occurrenceToSchedule.max_capacity) {
       try {
-        const response = await axios.post(
-          "http://localhost:5000/api/classes/schedule",
-          {
-            class_id: classItem.id,
-            occurrence_id: occurrence.id,
-            class_name: classItem.name, // Pass the class name to the API
-          }
-        );
-  
-        const { message } = response.data;
-  
-        if (message === "Class scheduled successfully") {
-          // Update the occurrence object with the new current_capacity value
-          occurrence.current_capacity += 1;
+        const url = `http://localhost:5000/api/classes/schedule`;
+        const response = await axios.post(url, {
+          class_id: classData.classItem.id,
+          occurrence_id: occurrenceToSchedule.id,
+          class_name: classData.classItem.name,
+          current_capacity: occurrenceToSchedule.current_capacity,
+          max_capacity: occurrenceToSchedule.max_capacity,
+        });
+        const data = response.data;
+
+        if (data.message === "Class scheduled successfully") {
+          occurrenceToSchedule.current_capacity += 1;
           setSchedulingResult("success");
           onClassUpdated();
         } else {
@@ -62,8 +63,7 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       setSchedulingResult("full");
     }
     setSnackbarOpen(true);
-  };  
-
+  };
 
   const handleClose = () => {
     setSchedulingResult(null);
@@ -74,23 +74,32 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
     setSnackbarOpen(false);
   };
 
+  if (!classData || !classData.classItem) {
+    return null;
+  }
+
+  const isClassFull = classData.occurrence && 
+    classData.occurrence.current_capacity >= classData.occurrence.max_capacity;
+
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{classData.name}</DialogTitle>
+        <DialogTitle>{classData.classItem.name}</DialogTitle>
         <DialogContent>
           <DialogContentText>
+            Current capacity: {classData.occurrence ? `${classData.occurrence.current_capacity}/${classData.occurrence.max_capacity}` : "N/A"}
             <br />
-            Current capacity: {classData && classData.occurrence && classData.occurrence.current_capacity !== undefined && classData.occurrence.max_capacity !== undefined ? `${classData.occurrence.current_capacity}/${classData.occurrence.max_capacity}` : ""}
-            <br />
-            Occurrence: {classData && classData.occurrence
-              ? `${classData.occurrence.day} ${classData.occurrence.time}`
-              : ""}
+            Occurrence: {classData.occurrence ? `${classData.occurrence.day} ${classData.occurrence.time}` : "N/A"}
+            {isClassFull && (
+              <Typography color="error" style={{ marginTop: '10px' }}>
+                Sorry. This class is fully booked.
+              </Typography>
+            )}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          {schedulingResult !== 'full' && (
+          {!isClassFull && (
             <Button onClick={handleScheduleClass} color="primary">
               Schedule Class
             </Button>
@@ -104,21 +113,13 @@ const ClassDetails = ({ open, classData, onClose, onClassUpdated }) => {
       >
         <Alert
           onClose={handleSnackbarClose}
-          severity={
-            schedulingResult === 'success'
-              ? 'success'
-              : schedulingResult === 'failed'
-              ? 'error'
-              : 'info' // Add this line to handle the 'full' case
-          }
+          severity={schedulingResult === 'success' ? 'success' : 'error'}
         >
-          {schedulingResult === 'success' && classData.classItem
-            ? `Class ${classData.classItem.name} scheduled successfully!`
-            : schedulingResult === 'failed' && classData.classItem
-            ? `Error scheduling class ${classData.classItem.name}. Please try again later.`
-            : classData.classItem
-            ? `Class ${classData.classItem.name} is full. Please try again later.`
-            : `Class data is not available`}
+          {schedulingResult === 'success'
+            ? `You successfully booked the ${classData.classItem.name} class!`
+            : schedulingResult === 'failed'
+            ? `Error scheduling ${classData.classItem.name}. Please try again later.`
+            : `${classData.classItem.name} is full. Please try again later.`}
         </Alert>
       </Snackbar>
     </>

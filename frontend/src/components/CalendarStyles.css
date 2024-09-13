@@ -1,13 +1,166 @@
-/* Make the event box have round edges */
-.fc-event {
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* CalendarStyles.css */
+
+/* General Calendar Styles */
+.fc {
+  background-color: #f9f9f9;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Make the class name bold and centered in the box */
-.fc-event-title {
-  font-weight: bold;
-  text-align: center;
+/* Toolbar Title */
+.fc .fc-toolbar-title {
+  font-size: 1.5rem;
+  color: #333;
 }
+
+/* Event Styles */
+.fc-event {
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  overflow: visible; /* Allow content to overflow */
+  height: auto; /* Allow height to adjust based on content */
+  min-height: 50px; /* Set a minimum height */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Ensure event background color is applied */
+.fc-event .fc-event-main {
+  background-color: inherit;
+}
+
+/* Event Hover Effect */
+.fc-event:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Content */
+.event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center;     /* Center horizontally */
+  height: 100%;
+  text-align: center;      /* Center text */
+  padding: 2px;
+  overflow: hidden;
+}
+
+/* Event Time */
+.event-time {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 2px;
+  line-height: 1.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Event Class Name */
+.event-class-name {
+  font-size: 0.8em;
+  margin-bottom: 2px;
+  line-height: 1.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Event Instructor */
+.event-instructor {
+  font-style: italic;
+  font-size: 0.7em;
+  line-height: 1.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+/* Instructor Photo */
+.instructor-photo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+
+/* Dialog Styles */
+.dialog-content {
+  padding: 20px;
+}
+
+.dialog-question {
+  margin-bottom: 20px;
+}
+
+.dialog-actions {
+  padding: 0;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.dialog-button {
+  color: #2196f3;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.available-spots {
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* Adjustments for Event Box Height */
+.fc .fc-timegrid-event {
+  height: auto !important;
+  min-height: 40px;
+}
+
+.fc-timegrid-event > .fc-event-main {
+  white-space: normal;
+}
+
+/* Adjustments for Mobile Devices */
+@media (max-width: 600px) {
+  .fc .fc-toolbar-title {
+    font-size: 1.2rem;
+  }
+
+  .event-content {
+    padding: 3px;
+  }
+}
+
+
+/* Custom Toolbar Styles */
+.fc .fc-toolbar {
+  display: none; /* Hide default toolbar */
+}
+
+.custom-calendar-toolbar {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.custom-calendar-toolbar .MuiIconButton-root {
+  color: #555;
+}
+
+.custom-calendar-toolbar .MuiIconButton-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.custom-calendar-toolbar .MuiTypography-root {
+  font-weight: 500;
+}
+
