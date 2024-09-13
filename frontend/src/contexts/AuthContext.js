@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleUser = (userData) => {
-    setUser(userData);
+  const handleUser = (userName) => {
+    setUser(userName);
     setError(null);
   };
 

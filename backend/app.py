@@ -162,12 +162,23 @@ def schedule_class():
         logging.info(f"Failed to schedule occurrence {occurrence_id}: Class is fully booked")
         return jsonify({"error": "Class is fully booked"}), 400
 
-@app.route("/api/initialize", methods=["POST"])
-def initialize():
-    with app.app_context():
-        initialize_app()
-    return jsonify({"message": "Application initialized"})
 
+@app.route("/api/reset", methods=["POST"])
+def reset_current_capacity():
+    '''
+    Reset current capacity for all occurrences
+    :return:
+    
+    reset_current_capacity()
+    return jsonify({"message": "Current capacity reset for all occurrences"})
+    '''
+    occurrences = Occurrence.query.all()
+    for occurrence in occurrences:
+        occurrence.current_capacity = 0
+    db.session.commit()
+    logging.info("Current capacity reset for all occurrences")
+    
+    return jsonify({"message": "Current capacity reset for all occurrences"})
 
 if __name__ == '__main__':
     with app.app_context():
